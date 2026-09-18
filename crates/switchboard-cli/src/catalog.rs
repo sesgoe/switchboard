@@ -434,6 +434,7 @@ fn scope_guidance(tool: &RegisteredTool) -> Vec<String> {
         _ => match tool.provider {
             ProviderKind::GoogleWorkspace => "Scopes depend on the native service/method; inspect its native schema/help and use gws auth login service flags when authorizing.",
             ProviderKind::GitHub => "Token or GitHub App permissions depend on repository visibility and the requested endpoint; inspect native gh help for the endpoint.",
+            ProviderKind::Hey => "Uses the HEY CLI's stored login; namespace account selects a linked mail account ID or all.",
             ProviderKind::MyChart => "Access depends on the configured account's granted FHIR resources and scopes.",
             ProviderKind::Phone => "The configured phone namespace supplies provider credentials; no OAuth scopes are requested by catalog discovery.",
             _ => "Access depends on the configured namespace and native command.",
@@ -508,6 +509,10 @@ fn raw_tool_examples(tool: &RegisteredTool, namespace: &str) -> Vec<String> {
     }
 
     match (tool.provider.clone(), tool.kind) {
+        (ProviderKind::Hey, ToolKind::Read) => vec![format!(
+            "switchboard {} --ns {namespace} --json -- box list --json", tool.name)],
+        (ProviderKind::Hey, ToolKind::Write) => vec![format!(
+            "switchboard {} --ns {namespace} --draft -- compose --to reader@example.com --subject 'Example' -m 'Draft for review' --draft --json", tool.name)],
         (ProviderKind::GoogleWorkspace, ToolKind::Read) => vec![format!(
             "switchboard {} --ns {namespace} --json -- gmail users messages list --params '{{\"userId\":\"me\",\"q\":\"newer_than:7d\",\"maxResults\":20}}'", tool.name)],
         (ProviderKind::GoogleWorkspace, ToolKind::Write) => vec![format!(

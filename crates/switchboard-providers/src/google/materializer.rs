@@ -34,6 +34,7 @@ impl<'a> GoogleWorkspaceCliCredentials<'a> {
                 credentials: credentials.expose(),
             }),
             ResolvedCredentials::PhoneCli { .. }
+            | ResolvedCredentials::HeyCli
             | ResolvedCredentials::GitHubCli
             | ResolvedCredentials::GitHubToken { .. }
             | ResolvedCredentials::MyChartCli { .. }
@@ -284,6 +285,7 @@ mod tests {
                 api_secret: None,
                 model_api_key: None,
             },
+            ResolvedCredentials::HeyCli => AuthSecretRefs::HeyCli,
             ResolvedCredentials::GitHubCli => AuthSecretRefs::GitHubCli,
             ResolvedCredentials::MyChartCli { .. } => AuthSecretRefs::MyChartCli {
                 base_url: None,

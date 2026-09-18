@@ -51,6 +51,7 @@ impl CliRuntimeMaterializer for DefaultMyChartCliMaterializer {
                 Ok(context)
             }
             ResolvedCredentials::PhoneCli { .. }
+            | ResolvedCredentials::HeyCli
             | ResolvedCredentials::GitHubCli
             | ResolvedCredentials::GitHubToken { .. }
             | ResolvedCredentials::GoogleCli
@@ -206,6 +207,7 @@ mod tests {
                 api_secret: None,
                 model_api_key: None,
             },
+            ResolvedCredentials::HeyCli => AuthSecretRefs::HeyCli,
             ResolvedCredentials::GitHubCli => AuthSecretRefs::GitHubCli,
             ResolvedCredentials::GoogleCli => AuthSecretRefs::GoogleCli,
             ResolvedCredentials::GitHubToken { .. }

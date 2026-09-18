@@ -69,6 +69,16 @@ jobs:
       - name: Install Google Workspace CLI
         run: cargo install --version 0.22.5 --locked google-workspace-cli --bin gws
 
+      - name: Install HEY CLI
+        run: |
+          hey_version=1.5.0
+          curl -fsSL "https://github.com/basecamp/hey-cli/releases/download/v${hey_version}/hey_${hey_version}_linux_amd64.tar.gz" \
+            -o /tmp/hey.tar.gz
+          echo '3b8db22b31cdd99addde5978121eb333379bd456d935eed2871357e3adf74e00  /tmp/hey.tar.gz' | sha256sum --check
+          mkdir -p /tmp/hey-cli
+          tar -xzf /tmp/hey.tar.gz -C /tmp/hey-cli
+          sudo install /tmp/hey-cli/hey /usr/local/bin/hey
+
       - name: Build MyChart CLI
         run: cargo build -p mychart-cli
 
@@ -85,6 +95,7 @@ jobs:
         run: |
           gh --version
           gws --version
+          hey --version
           mychart --version
           schwab --version
           phone --version

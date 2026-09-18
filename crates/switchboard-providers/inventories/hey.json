@@ -1,0 +1,2790 @@
+{
+  "provider": "hey",
+  "program": "hey",
+  "commands": [
+    {
+      "path": [],
+      "command": "hey",
+      "summary": "HEY mail and calendar CLI",
+      "help_args": [
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "account",
+        "attachment",
+        "auth",
+        "box",
+        "bubble",
+        "bulk-reply",
+        "bundle",
+        "calendar",
+        "clip",
+        "collection",
+        "compose",
+        "contact",
+        "draft",
+        "event",
+        "forward",
+        "habit",
+        "ignore",
+        "journal",
+        "label",
+        "move",
+        "reply",
+        "screener",
+        "search",
+        "seen",
+        "set-aside",
+        "share",
+        "snippet",
+        "spam",
+        "stop-ignoring",
+        "thread",
+        "timetrack",
+        "todo",
+        "trash",
+        "unseen",
+        "unshare",
+        "workflow"
+      ]
+    },
+    {
+      "path": [
+        "account"
+      ],
+      "command": "hey account",
+      "summary": "List and select linked mail accounts",
+      "help_args": [
+        "account",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "list"
+      ]
+    },
+    {
+      "path": [
+        "account",
+        "list"
+      ],
+      "command": "hey account list",
+      "summary": "List linked mail accounts",
+      "help_args": [
+        "account",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "attachment"
+      ],
+      "command": "hey attachment",
+      "summary": "List and save files from a thread",
+      "help_args": [
+        "attachment",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "list",
+        "save"
+      ]
+    },
+    {
+      "path": [
+        "attachment",
+        "list"
+      ],
+      "command": "hey attachment list",
+      "summary": "List a thread's attachments",
+      "help_args": [
+        "attachment",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "attachment",
+        "save"
+      ],
+      "command": "hey attachment save",
+      "summary": "Save an attachment to disk",
+      "help_args": [
+        "attachment",
+        "save",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "auth"
+      ],
+      "command": "hey auth",
+      "summary": "Sign in, sign out, and check login status",
+      "help_args": [
+        "auth",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "status"
+      ]
+    },
+    {
+      "path": [
+        "auth",
+        "status"
+      ],
+      "command": "hey auth status",
+      "summary": "Show authentication status",
+      "help_args": [
+        "auth",
+        "status",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "box"
+      ],
+      "command": "hey box",
+      "summary": "List HEY boxes and their email threads",
+      "help_args": [
+        "box",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "list",
+        "view"
+      ]
+    },
+    {
+      "path": [
+        "box",
+        "list"
+      ],
+      "command": "hey box list",
+      "summary": "List your HEY boxes",
+      "help_args": [
+        "box",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "box",
+        "view"
+      ],
+      "command": "hey box view",
+      "summary": "List email threads in a box",
+      "help_args": [
+        "box",
+        "view",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "bubble"
+      ],
+      "command": "hey bubble",
+      "summary": "Bubble email threads up in the Imbox",
+      "help_args": [
+        "bubble",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "list",
+        "pop",
+        "up"
+      ]
+    },
+    {
+      "path": [
+        "bubble",
+        "list"
+      ],
+      "command": "hey bubble list",
+      "summary": "List bubbled-up and scheduled email threads",
+      "help_args": [
+        "bubble",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "bubble",
+        "pop"
+      ],
+      "command": "hey bubble pop",
+      "summary": "Cancel bubble-ups",
+      "help_args": [
+        "bubble",
+        "pop",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "bubble",
+        "up"
+      ],
+      "command": "hey bubble up",
+      "summary": "Bubble email threads up",
+      "help_args": [
+        "bubble",
+        "up",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "bulk-reply"
+      ],
+      "command": "hey bulk-reply",
+      "summary": "Reply to multiple email threads",
+      "help_args": [
+        "bulk-reply",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "preview",
+        "send",
+        "undo"
+      ]
+    },
+    {
+      "path": [
+        "bulk-reply",
+        "preview"
+      ],
+      "command": "hey bulk-reply preview",
+      "summary": "Preview threads and recipients without sending",
+      "help_args": [
+        "bulk-reply",
+        "preview",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "bulk-reply",
+        "send"
+      ],
+      "command": "hey bulk-reply send",
+      "summary": "Send one reply to multiple threads",
+      "help_args": [
+        "bulk-reply",
+        "send",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "bulk-reply",
+        "undo"
+      ],
+      "command": "hey bulk-reply undo",
+      "summary": "Recall a delayed bulk reply",
+      "help_args": [
+        "bulk-reply",
+        "undo",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "bundle"
+      ],
+      "command": "hey bundle",
+      "summary": "List the unseen threads a bundle groups",
+      "help_args": [
+        "bundle",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "view"
+      ]
+    },
+    {
+      "path": [
+        "bundle",
+        "view"
+      ],
+      "command": "hey bundle view",
+      "summary": "List the unseen threads a bundle groups",
+      "help_args": [
+        "bundle",
+        "view",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "calendar"
+      ],
+      "command": "hey calendar",
+      "summary": "Browse your calendars",
+      "help_args": [
+        "calendar",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "list"
+      ]
+    },
+    {
+      "path": [
+        "calendar",
+        "list"
+      ],
+      "command": "hey calendar list",
+      "summary": "List calendars",
+      "help_args": [
+        "calendar",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "clip"
+      ],
+      "command": "hey clip",
+      "summary": "List and manage passages saved from email",
+      "help_args": [
+        "clip",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "create",
+        "delete",
+        "list"
+      ]
+    },
+    {
+      "path": [
+        "clip",
+        "create"
+      ],
+      "command": "hey clip create",
+      "summary": "Save text from an email entry",
+      "help_args": [
+        "clip",
+        "create",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "clip",
+        "delete"
+      ],
+      "command": "hey clip delete",
+      "summary": "Delete a saved clip",
+      "help_args": [
+        "clip",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "clip",
+        "list"
+      ],
+      "command": "hey clip list",
+      "summary": "List the newest page of passages clipped from email",
+      "help_args": [
+        "clip",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "collection"
+      ],
+      "command": "hey collection",
+      "summary": "List and manage email collections",
+      "help_args": [
+        "collection",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "add",
+        "create",
+        "list",
+        "remove",
+        "update",
+        "view"
+      ]
+    },
+    {
+      "path": [
+        "collection",
+        "add"
+      ],
+      "command": "hey collection add",
+      "summary": "Add email threads to a collection",
+      "help_args": [
+        "collection",
+        "add",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "collection",
+        "create"
+      ],
+      "command": "hey collection create",
+      "summary": "Create a collection",
+      "help_args": [
+        "collection",
+        "create",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "collection",
+        "list"
+      ],
+      "command": "hey collection list",
+      "summary": "List your email collections",
+      "help_args": [
+        "collection",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "collection",
+        "remove"
+      ],
+      "command": "hey collection remove",
+      "summary": "Remove email threads from a collection",
+      "help_args": [
+        "collection",
+        "remove",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "collection",
+        "update"
+      ],
+      "command": "hey collection update",
+      "summary": "Update a collection",
+      "help_args": [
+        "collection",
+        "update",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "collection",
+        "view"
+      ],
+      "command": "hey collection view",
+      "summary": "List email threads in a collection",
+      "help_args": [
+        "collection",
+        "view",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "compose"
+      ],
+      "command": "hey compose",
+      "summary": "Write and send a new email",
+      "help_args": [
+        "compose",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "contact"
+      ],
+      "command": "hey contact",
+      "summary": "Manage contacts",
+      "help_args": [
+        "contact",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "add",
+        "bundle",
+        "hide",
+        "list",
+        "note",
+        "show",
+        "show-again",
+        "threads",
+        "unbundle",
+        "update"
+      ]
+    },
+    {
+      "path": [
+        "contact",
+        "add"
+      ],
+      "command": "hey contact add",
+      "summary": "Add a contact",
+      "help_args": [
+        "contact",
+        "add",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "bundle"
+      ],
+      "command": "hey contact bundle",
+      "summary": "Bundle a contact's mail",
+      "help_args": [
+        "contact",
+        "bundle",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "hide"
+      ],
+      "command": "hey contact hide",
+      "summary": "Hide a contact",
+      "help_args": [
+        "contact",
+        "hide",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "list"
+      ],
+      "command": "hey contact list",
+      "summary": "List contacts",
+      "help_args": [
+        "contact",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "note"
+      ],
+      "command": "hey contact note",
+      "summary": "Manage private contact notes",
+      "help_args": [
+        "contact",
+        "note",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "delete",
+        "set",
+        "show"
+      ]
+    },
+    {
+      "path": [
+        "contact",
+        "note",
+        "delete"
+      ],
+      "command": "hey contact note delete",
+      "summary": "Delete a private contact note",
+      "help_args": [
+        "contact",
+        "note",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "note",
+        "set"
+      ],
+      "command": "hey contact note set",
+      "summary": "Write or edit a private contact note",
+      "help_args": [
+        "contact",
+        "note",
+        "set",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "note",
+        "show"
+      ],
+      "command": "hey contact note show",
+      "summary": "Read a private contact note",
+      "help_args": [
+        "contact",
+        "note",
+        "show",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "show"
+      ],
+      "command": "hey contact show",
+      "summary": "View a contact",
+      "help_args": [
+        "contact",
+        "show",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "show-again"
+      ],
+      "command": "hey contact show-again",
+      "summary": "Show a hidden contact again",
+      "help_args": [
+        "contact",
+        "show-again",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "threads"
+      ],
+      "command": "hey contact threads",
+      "summary": "List every thread with a contact",
+      "help_args": [
+        "contact",
+        "threads",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "unbundle"
+      ],
+      "command": "hey contact unbundle",
+      "summary": "List a contact's mail separately",
+      "help_args": [
+        "contact",
+        "unbundle",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "contact",
+        "update"
+      ],
+      "command": "hey contact update",
+      "summary": "Edit a contact",
+      "help_args": [
+        "contact",
+        "update",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "draft"
+      ],
+      "command": "hey draft",
+      "summary": "Manage unsent drafts",
+      "help_args": [
+        "draft",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "delete",
+        "edit",
+        "list",
+        "send",
+        "show"
+      ]
+    },
+    {
+      "path": [
+        "draft",
+        "delete"
+      ],
+      "command": "hey draft delete",
+      "summary": "Trash drafts",
+      "help_args": [
+        "draft",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "draft",
+        "edit"
+      ],
+      "command": "hey draft edit",
+      "summary": "Change a draft",
+      "help_args": [
+        "draft",
+        "edit",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "draft",
+        "list"
+      ],
+      "command": "hey draft list",
+      "summary": "List draft emails",
+      "help_args": [
+        "draft",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "draft",
+        "send"
+      ],
+      "command": "hey draft send",
+      "summary": "Deliver a draft",
+      "help_args": [
+        "draft",
+        "send",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "draft",
+        "show"
+      ],
+      "command": "hey draft show",
+      "summary": "Read a draft back",
+      "help_args": [
+        "draft",
+        "show",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "event"
+      ],
+      "command": "hey event",
+      "summary": "Read and manage calendar events",
+      "help_args": [
+        "event",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "add",
+        "day",
+        "delete",
+        "edit",
+        "list",
+        "week"
+      ]
+    },
+    {
+      "path": [
+        "event",
+        "add"
+      ],
+      "command": "hey event add",
+      "summary": "Create an event",
+      "help_args": [
+        "event",
+        "add",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "event",
+        "day"
+      ],
+      "command": "hey event day",
+      "summary": "List the events of one day, as HEY draws it",
+      "help_args": [
+        "event",
+        "day",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "event",
+        "delete"
+      ],
+      "command": "hey event delete",
+      "summary": "Delete an event",
+      "help_args": [
+        "event",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "event",
+        "edit"
+      ],
+      "command": "hey event edit",
+      "summary": "Change an event",
+      "help_args": [
+        "event",
+        "edit",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "event",
+        "list"
+      ],
+      "command": "hey event list",
+      "summary": "List calendar events",
+      "help_args": [
+        "event",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "event",
+        "week"
+      ],
+      "command": "hey event week",
+      "summary": "List the events of one week, as HEY draws it",
+      "help_args": [
+        "event",
+        "week",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "forward"
+      ],
+      "command": "hey forward",
+      "summary": "Forward the latest message in a thread",
+      "help_args": [
+        "forward",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "habit"
+      ],
+      "command": "hey habit",
+      "summary": "Create and manage habits",
+      "help_args": [
+        "habit",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "complete",
+        "create",
+        "delete",
+        "edit",
+        "list",
+        "uncomplete"
+      ]
+    },
+    {
+      "path": [
+        "habit",
+        "complete"
+      ],
+      "command": "hey habit complete",
+      "summary": "Mark a habit as complete for a date",
+      "help_args": [
+        "habit",
+        "complete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "habit",
+        "create"
+      ],
+      "command": "hey habit create",
+      "summary": "Create a habit",
+      "help_args": [
+        "habit",
+        "create",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "habit",
+        "delete"
+      ],
+      "command": "hey habit delete",
+      "summary": "Delete a habit and its history",
+      "help_args": [
+        "habit",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "habit",
+        "edit"
+      ],
+      "command": "hey habit edit",
+      "summary": "Edit a habit",
+      "help_args": [
+        "habit",
+        "edit",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "habit",
+        "list"
+      ],
+      "command": "hey habit list",
+      "summary": "List habits",
+      "help_args": [
+        "habit",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "habit",
+        "uncomplete"
+      ],
+      "command": "hey habit uncomplete",
+      "summary": "Remove a habit completion for a date",
+      "help_args": [
+        "habit",
+        "uncomplete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "ignore"
+      ],
+      "command": "hey ignore",
+      "summary": "Ignore email threads",
+      "help_args": [
+        "ignore",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "journal"
+      ],
+      "command": "hey journal",
+      "summary": "Read and write journal entries",
+      "help_args": [
+        "journal",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "list",
+        "read",
+        "write"
+      ]
+    },
+    {
+      "path": [
+        "journal",
+        "list"
+      ],
+      "command": "hey journal list",
+      "summary": "List journal entries",
+      "help_args": [
+        "journal",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "journal",
+        "read"
+      ],
+      "command": "hey journal read",
+      "summary": "Read a journal entry (default: today)",
+      "help_args": [
+        "journal",
+        "read",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "journal",
+        "write"
+      ],
+      "command": "hey journal write",
+      "summary": "Write or edit a journal entry (default: today)",
+      "help_args": [
+        "journal",
+        "write",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "label"
+      ],
+      "command": "hey label",
+      "summary": "List and manage email labels",
+      "help_args": [
+        "label",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "add",
+        "create",
+        "list",
+        "remove",
+        "view"
+      ]
+    },
+    {
+      "path": [
+        "label",
+        "add"
+      ],
+      "command": "hey label add",
+      "summary": "Add a label to email threads",
+      "help_args": [
+        "label",
+        "add",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "label",
+        "create"
+      ],
+      "command": "hey label create",
+      "summary": "Create a label and add it to email threads",
+      "help_args": [
+        "label",
+        "create",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "label",
+        "list"
+      ],
+      "command": "hey label list",
+      "summary": "List your email labels",
+      "help_args": [
+        "label",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "label",
+        "remove"
+      ],
+      "command": "hey label remove",
+      "summary": "Remove labels from email threads",
+      "help_args": [
+        "label",
+        "remove",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "label",
+        "view"
+      ],
+      "command": "hey label view",
+      "summary": "List email threads with a label",
+      "help_args": [
+        "label",
+        "view",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "move"
+      ],
+      "command": "hey move",
+      "summary": "Move email threads to another box",
+      "help_args": [
+        "move",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "reply"
+      ],
+      "command": "hey reply",
+      "summary": "Reply to a thread",
+      "help_args": [
+        "reply",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "screener"
+      ],
+      "command": "hey screener",
+      "summary": "Decide who gets to email you",
+      "help_args": [
+        "screener",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "approve",
+        "clear",
+        "deny",
+        "history",
+        "list"
+      ]
+    },
+    {
+      "path": [
+        "screener",
+        "approve"
+      ],
+      "command": "hey screener approve",
+      "summary": "Let a sender through",
+      "help_args": [
+        "screener",
+        "approve",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "screener",
+        "clear"
+      ],
+      "command": "hey screener clear",
+      "summary": "Empty the Screener without deciding",
+      "help_args": [
+        "screener",
+        "clear",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "screener",
+        "deny"
+      ],
+      "command": "hey screener deny",
+      "summary": "Turn a sender away",
+      "help_args": [
+        "screener",
+        "deny",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "screener",
+        "history"
+      ],
+      "command": "hey screener history",
+      "summary": "List the senders already screened",
+      "help_args": [
+        "screener",
+        "history",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "screener",
+        "list"
+      ],
+      "command": "hey screener list",
+      "summary": "List the senders waiting to be screened",
+      "help_args": [
+        "screener",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "search"
+      ],
+      "command": "hey search",
+      "summary": "Search email threads and messages",
+      "help_args": [
+        "search",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      },
+      "subcommands": [
+        "filters"
+      ]
+    },
+    {
+      "path": [
+        "search",
+        "filters"
+      ],
+      "command": "hey search filters",
+      "summary": "List available search refinement values",
+      "help_args": [
+        "search",
+        "filters",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "seen"
+      ],
+      "command": "hey seen",
+      "summary": "Mark email threads as seen",
+      "help_args": [
+        "seen",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "set-aside"
+      ],
+      "command": "hey set-aside",
+      "summary": "List and group email threads in Set Aside",
+      "help_args": [
+        "set-aside",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "group",
+        "view"
+      ]
+    },
+    {
+      "path": [
+        "set-aside",
+        "group"
+      ],
+      "command": "hey set-aside group",
+      "summary": "List and manage groups in Set Aside",
+      "help_args": [
+        "set-aside",
+        "group",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "add",
+        "create",
+        "delete",
+        "list",
+        "remove",
+        "view"
+      ]
+    },
+    {
+      "path": [
+        "set-aside",
+        "group",
+        "add"
+      ],
+      "command": "hey set-aside group add",
+      "summary": "Add email threads to a Set Aside group",
+      "help_args": [
+        "set-aside",
+        "group",
+        "add",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "set-aside",
+        "group",
+        "create"
+      ],
+      "command": "hey set-aside group create",
+      "summary": "Gather email threads into a new Set Aside group",
+      "help_args": [
+        "set-aside",
+        "group",
+        "create",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "set-aside",
+        "group",
+        "delete"
+      ],
+      "command": "hey set-aside group delete",
+      "summary": "Break up a Set Aside group",
+      "help_args": [
+        "set-aside",
+        "group",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "set-aside",
+        "group",
+        "list"
+      ],
+      "command": "hey set-aside group list",
+      "summary": "List the groups in Set Aside",
+      "help_args": [
+        "set-aside",
+        "group",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "set-aside",
+        "group",
+        "remove"
+      ],
+      "command": "hey set-aside group remove",
+      "summary": "Take email threads out of their Set Aside group",
+      "help_args": [
+        "set-aside",
+        "group",
+        "remove",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "set-aside",
+        "group",
+        "view"
+      ],
+      "command": "hey set-aside group view",
+      "summary": "List email threads in a Set Aside group",
+      "help_args": [
+        "set-aside",
+        "group",
+        "view",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "set-aside",
+        "view"
+      ],
+      "command": "hey set-aside view",
+      "summary": "List email threads in Set Aside",
+      "help_args": [
+        "set-aside",
+        "view",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "share"
+      ],
+      "command": "hey share",
+      "summary": "Get a sharing link for an email thread",
+      "help_args": [
+        "share",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "snippet"
+      ],
+      "command": "hey snippet",
+      "summary": "List and manage reusable email snippets",
+      "help_args": [
+        "snippet",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "create",
+        "delete",
+        "list",
+        "update"
+      ]
+    },
+    {
+      "path": [
+        "snippet",
+        "create"
+      ],
+      "command": "hey snippet create",
+      "summary": "Create a reusable email snippet",
+      "help_args": [
+        "snippet",
+        "create",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "snippet",
+        "delete"
+      ],
+      "command": "hey snippet delete",
+      "summary": "Delete a reusable email snippet",
+      "help_args": [
+        "snippet",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "snippet",
+        "list"
+      ],
+      "command": "hey snippet list",
+      "summary": "List reusable email snippets",
+      "help_args": [
+        "snippet",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "snippet",
+        "update"
+      ],
+      "command": "hey snippet update",
+      "summary": "Update a reusable email snippet",
+      "help_args": [
+        "snippet",
+        "update",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "spam"
+      ],
+      "command": "hey spam",
+      "summary": "Mark email threads as spam",
+      "help_args": [
+        "spam",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "stop-ignoring"
+      ],
+      "command": "hey stop-ignoring",
+      "summary": "Stop ignoring email threads",
+      "help_args": [
+        "stop-ignoring",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "thread"
+      ],
+      "command": "hey thread",
+      "summary": "Read email threads",
+      "help_args": [
+        "thread",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "read"
+      ]
+    },
+    {
+      "path": [
+        "thread",
+        "read"
+      ],
+      "command": "hey thread read",
+      "summary": "Read a thread",
+      "help_args": [
+        "thread",
+        "read",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "timetrack"
+      ],
+      "command": "hey timetrack",
+      "summary": "Track time",
+      "help_args": [
+        "timetrack",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "categories",
+        "category",
+        "current",
+        "delete",
+        "edit",
+        "export",
+        "list",
+        "start",
+        "stop"
+      ]
+    },
+    {
+      "path": [
+        "timetrack",
+        "categories"
+      ],
+      "command": "hey timetrack categories",
+      "summary": "List time track categories",
+      "help_args": [
+        "timetrack",
+        "categories",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "timetrack",
+        "category"
+      ],
+      "command": "hey timetrack category",
+      "summary": "Manage time track categories",
+      "help_args": [
+        "timetrack",
+        "category",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "create",
+        "delete",
+        "rename"
+      ]
+    },
+    {
+      "path": [
+        "timetrack",
+        "category",
+        "create"
+      ],
+      "command": "hey timetrack category create",
+      "summary": "Create a time track category",
+      "help_args": [
+        "timetrack",
+        "category",
+        "create",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "timetrack",
+        "category",
+        "delete"
+      ],
+      "command": "hey timetrack category delete",
+      "summary": "Delete a time track category",
+      "help_args": [
+        "timetrack",
+        "category",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "timetrack",
+        "category",
+        "rename"
+      ],
+      "command": "hey timetrack category rename",
+      "summary": "Rename a time track category",
+      "help_args": [
+        "timetrack",
+        "category",
+        "rename",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "timetrack",
+        "current"
+      ],
+      "command": "hey timetrack current",
+      "summary": "Show current time tracking status",
+      "help_args": [
+        "timetrack",
+        "current",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "timetrack",
+        "delete"
+      ],
+      "command": "hey timetrack delete",
+      "summary": "Delete a time track",
+      "help_args": [
+        "timetrack",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "timetrack",
+        "edit"
+      ],
+      "command": "hey timetrack edit",
+      "summary": "Edit a completed time track",
+      "help_args": [
+        "timetrack",
+        "edit",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "timetrack",
+        "export"
+      ],
+      "command": "hey timetrack export",
+      "summary": "Export completed time tracks as CSV",
+      "help_args": [
+        "timetrack",
+        "export",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "timetrack",
+        "list"
+      ],
+      "command": "hey timetrack list",
+      "summary": "List completed time tracks",
+      "help_args": [
+        "timetrack",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "timetrack",
+        "start"
+      ],
+      "command": "hey timetrack start",
+      "summary": "Start time tracking",
+      "help_args": [
+        "timetrack",
+        "start",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "timetrack",
+        "stop"
+      ],
+      "command": "hey timetrack stop",
+      "summary": "Stop time tracking",
+      "help_args": [
+        "timetrack",
+        "stop",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "todo"
+      ],
+      "command": "hey todo",
+      "summary": "Create and manage to-dos",
+      "help_args": [
+        "todo",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "add",
+        "complete",
+        "delete",
+        "list",
+        "uncomplete"
+      ]
+    },
+    {
+      "path": [
+        "todo",
+        "add"
+      ],
+      "command": "hey todo add",
+      "summary": "Create a new todo",
+      "help_args": [
+        "todo",
+        "add",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "todo",
+        "complete"
+      ],
+      "command": "hey todo complete",
+      "summary": "Mark a todo as complete",
+      "help_args": [
+        "todo",
+        "complete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "todo",
+        "delete"
+      ],
+      "command": "hey todo delete",
+      "summary": "Delete a todo",
+      "help_args": [
+        "todo",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "todo",
+        "list"
+      ],
+      "command": "hey todo list",
+      "summary": "List todos",
+      "help_args": [
+        "todo",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "todo",
+        "uncomplete"
+      ],
+      "command": "hey todo uncomplete",
+      "summary": "Mark a todo as incomplete",
+      "help_args": [
+        "todo",
+        "uncomplete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "trash"
+      ],
+      "command": "hey trash",
+      "summary": "Move email threads to Trash",
+      "help_args": [
+        "trash",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "unseen"
+      ],
+      "command": "hey unseen",
+      "summary": "Mark email threads as unseen",
+      "help_args": [
+        "unseen",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "unshare"
+      ],
+      "command": "hey unshare",
+      "summary": "Turn off an email thread's sharing link",
+      "help_args": [
+        "unshare",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "workflow"
+      ],
+      "command": "hey workflow",
+      "summary": "List and manage email workflows",
+      "help_args": [
+        "workflow",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "add",
+        "create",
+        "delete",
+        "list",
+        "move",
+        "remove",
+        "stage",
+        "update",
+        "view"
+      ]
+    },
+    {
+      "path": [
+        "workflow",
+        "add"
+      ],
+      "command": "hey workflow add",
+      "summary": "Add email threads to a workflow stage",
+      "help_args": [
+        "workflow",
+        "add",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "workflow",
+        "create"
+      ],
+      "command": "hey workflow create",
+      "summary": "Create an email workflow",
+      "help_args": [
+        "workflow",
+        "create",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "workflow",
+        "delete"
+      ],
+      "command": "hey workflow delete",
+      "summary": "Delete an email workflow",
+      "help_args": [
+        "workflow",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "workflow",
+        "list"
+      ],
+      "command": "hey workflow list",
+      "summary": "List your email workflows",
+      "help_args": [
+        "workflow",
+        "list",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    },
+    {
+      "path": [
+        "workflow",
+        "move"
+      ],
+      "command": "hey workflow move",
+      "summary": "Move email threads to another workflow stage",
+      "help_args": [
+        "workflow",
+        "move",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "workflow",
+        "remove"
+      ],
+      "command": "hey workflow remove",
+      "summary": "Remove email threads from a workflow",
+      "help_args": [
+        "workflow",
+        "remove",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "workflow",
+        "stage"
+      ],
+      "command": "hey workflow stage",
+      "summary": "Manage workflow stages",
+      "help_args": [
+        "workflow",
+        "stage",
+        "--help"
+      ],
+      "node_kind": "group",
+      "operation_kind": "unknown",
+      "undo_support": {
+        "kind": "unknown"
+      },
+      "subcommands": [
+        "create",
+        "delete",
+        "update"
+      ]
+    },
+    {
+      "path": [
+        "workflow",
+        "stage",
+        "create"
+      ],
+      "command": "hey workflow stage create",
+      "summary": "Add an Untitled stage to a workflow",
+      "help_args": [
+        "workflow",
+        "stage",
+        "create",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "workflow",
+        "stage",
+        "delete"
+      ],
+      "command": "hey workflow stage delete",
+      "summary": "Delete a workflow stage",
+      "help_args": [
+        "workflow",
+        "stage",
+        "delete",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "workflow",
+        "stage",
+        "update"
+      ],
+      "command": "hey workflow stage update",
+      "summary": "Rename a workflow stage",
+      "help_args": [
+        "workflow",
+        "stage",
+        "update",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "workflow",
+        "update"
+      ],
+      "command": "hey workflow update",
+      "summary": "Rename an email workflow",
+      "help_args": [
+        "workflow",
+        "update",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "write",
+      "undo_support": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "path": [
+        "workflow",
+        "view"
+      ],
+      "command": "hey workflow view",
+      "summary": "View a workflow and its stages",
+      "help_args": [
+        "workflow",
+        "view",
+        "--help"
+      ],
+      "node_kind": "operation",
+      "operation_kind": "read",
+      "undo_support": {
+        "kind": "none"
+      }
+    }
+  ]
+}

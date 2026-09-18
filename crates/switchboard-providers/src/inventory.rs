@@ -3,6 +3,7 @@ use switchboard_core::{Error, ProviderKind, Result};
 
 const GITHUB_INVENTORY_JSON: &str = include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/inventories/github.json"));
 const GOOGLE_INVENTORY_JSON: &str = include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/inventories/google.json"));
+const HEY_INVENTORY_JSON: &str = include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/inventories/hey.json"));
 const MYCHART_INVENTORY_JSON: &str = include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/inventories/mychart.json"));
 const SCHWAB_INVENTORY_JSON: &str = include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/inventories/schwab.json"));
 
@@ -71,6 +72,7 @@ pub fn embedded_inventory(provider: ProviderKind) -> Result<CliInventory> {
     let json = match provider {
         ProviderKind::GitHub => GITHUB_INVENTORY_JSON,
         ProviderKind::GoogleWorkspace => GOOGLE_INVENTORY_JSON,
+        ProviderKind::Hey => HEY_INVENTORY_JSON,
         ProviderKind::MyChart => MYCHART_INVENTORY_JSON,
         ProviderKind::Schwab => SCHWAB_INVENTORY_JSON,
         _ => {

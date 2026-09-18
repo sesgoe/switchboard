@@ -10,6 +10,8 @@ pub enum ProviderKind {
     GitHub,
     #[serde(rename = "google")]
     GoogleWorkspace,
+    #[serde(rename = "hey")]
+    Hey,
     #[serde(rename = "mychart")]
     MyChart,
     #[serde(rename = "schwab")]
@@ -31,6 +33,7 @@ impl ProviderKind {
         match value {
             "github" => Some(Self::GitHub),
             "google" => Some(Self::GoogleWorkspace),
+            "hey" => Some(Self::Hey),
             "mychart" => Some(Self::MyChart),
             "schwab" => Some(Self::Schwab),
             "phone" => Some(Self::Phone),
@@ -53,6 +56,7 @@ impl Display for ProviderKind {
         let value = match self {
             Self::GitHub => "github",
             Self::GoogleWorkspace => "google",
+            Self::Hey => "hey",
             Self::MyChart => "mychart",
             Self::Schwab => "schwab",
             Self::Phone => "phone",

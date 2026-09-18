@@ -1,6 +1,7 @@
 mod cli;
 mod github;
 mod google;
+mod hey;
 pub mod inventory;
 pub mod inventory_generator;
 mod mychart;
@@ -19,6 +20,7 @@ pub use crate::{
     cli::diagnostics::{diagnose_one_password_cli, diagnose_provider_cli, CliBinaryDiagnostic},
     github::GitHubAdapter,
     google::GoogleWorkspaceAdapter,
+    hey::HeyAdapter,
     mychart::MyChartAdapter,
     phone::PhoneAdapter,
     schwab::SchwabAdapter,
@@ -34,6 +36,7 @@ pub fn default_registry() -> switchboard_core::Result<AdapterRegistry> {
     let mut adapters = AdapterRegistry::default();
     adapters.register(Arc::new(GitHubAdapter::new()?));
     adapters.register(Arc::new(GoogleWorkspaceAdapter::new()?));
+    adapters.register(Arc::new(HeyAdapter::new()?));
     adapters.register(Arc::new(MyChartAdapter::new()?));
     adapters.register(Arc::new(PhoneAdapter::new()?));
     adapters.register(Arc::new(SchwabAdapter::new()?));

@@ -69,6 +69,7 @@ This repo is real, but still in the "tighten the public surface" phase.
 | Google curated reads | Mixed | Hydrated mail search, thread context, mail read and calendar list execute; drive search is planning-only |
 | Google curated writes | Mixed | Mail draft and calendar create/delete execute, mail send is planning-only |
 | MyChart raw CLI tools | Executable | Namespace-scoped `mychart-cli` passthrough, including inventory-backed raw leaf commands |
+| HEY raw CLI tools | Executable | Reuses the installed HEY CLI login, with linked mail account selection and approved writes; see [setup](docs/hey.md) |
 | Phone calls | Implemented, live validation pending | Local Rust CLI, replaceable LiveKit worker, encrypted transcripts; see [setup](docs/phone.md) |
 | Raw provider CLI tools | Executable | Namespace, policy, approval, and audit still apply |
 
@@ -111,6 +112,10 @@ nix build .#switchboard
 ## 5-Minute Quickstart
 
 Create a `switchboard.toml` in the repo root or at `$XDG_CONFIG_HOME/switchboard/config.toml`.
+
+For an existing HEY CLI login, use the [HEY setup and usage guide](docs/hey.md).
+HEY namespaces select linked mail accounts from that login; they do not create
+separate logins or isolate calendar data.
 
 Minimal GitHub example:
 

@@ -565,6 +565,7 @@ impl Switchboard {
             },
             AuthSecretRefs::GitHubCli => ResolvedCredentials::GitHubCli,
             AuthSecretRefs::GoogleCli => ResolvedCredentials::GoogleCli,
+            AuthSecretRefs::HeyCli => ResolvedCredentials::HeyCli,
             AuthSecretRefs::GitHubToken { token } => ResolvedCredentials::GitHubToken {
                 token: self.resolve_secret(&target.auth, token)?,
             },

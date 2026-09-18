@@ -33,7 +33,8 @@ impl CliRuntimeMaterializer for DefaultGitHubCliMaterializer {
                 context.clear_env(LEGACY_ENTERPRISE_TOKEN_ENV);
                 Ok(context)
             }
-            ResolvedCredentials::GoogleCli
+            ResolvedCredentials::HeyCli
+            | ResolvedCredentials::GoogleCli
             | ResolvedCredentials::GoogleOAuth { .. }
             | ResolvedCredentials::GoogleOAuthFile { .. }
             | ResolvedCredentials::MyChartCli { .. }

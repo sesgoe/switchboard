@@ -8,6 +8,8 @@ use switchboard_core::{Error, ProviderKind, Result};
 
 use crate::inventory::{CliInventory, CliInventoryCommand, CliInventoryNodeKind, CliOperationKind, CliUndoSupport};
 
+mod hey;
+
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub struct CliInventoryTarget {
     pub provider: ProviderKind,
@@ -36,6 +38,12 @@ impl CliInventoryTarget {
                 },
             },
             Self {
+                provider: ProviderKind::Hey,
+                program: "hey".to_owned(),
+                output_path: PathBuf::from("crates/switchboard-providers/inventories/hey.json"),
+                help_strategy: CliHelpStrategy::HeyCommandsJson,
+            },
+            Self {
                 provider: ProviderKind::MyChart,
                 program: "mychart".to_owned(),
                 output_path: PathBuf::from("crates/switchboard-providers/inventories/mychart.json"),
@@ -58,6 +66,7 @@ impl CliInventoryTarget {
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub enum CliHelpStrategy {
     AppendFlag { fallback_subcommand: Option<String> },
+    HeyCommandsJson,
 }
 
 pub trait CliHelpRunner: Send + Sync {
@@ -69,6 +78,9 @@ pub struct ProcessCliHelpRunner;
 impl CliHelpRunner for ProcessCliHelpRunner {
     fn help(&self, target: &CliInventoryTarget, path: &[String]) -> Result<String> {
         let strategies = match &target.help_strategy {
+            CliHelpStrategy::HeyCommandsJson => {
+                vec![vec![target.program.clone(), "commands".into(), "--json".into()]]
+            }
             CliHelpStrategy::AppendFlag { fallback_subcommand } => {
                 let mut strategies = vec![build_append_flag_invocation(&target.program, path)];
                 if let Some(fallback_subcommand) = fallback_subcommand {
@@ -98,6 +110,9 @@ impl CliHelpRunner for ProcessCliHelpRunner {
 }
 
 pub fn generate_inventory(target: &CliInventoryTarget, runner: &dyn CliHelpRunner) -> Result<CliInventory> {
+    if target.help_strategy == CliHelpStrategy::HeyCommandsJson {
+        return hey::parse_catalog(target, &runner.help(target, &[])?);
+    }
     let mut records = Vec::new();
     let mut visited = HashSet::new();
     walk_inventory(target, Vec::new(), runner, &mut visited, &mut records)?;
@@ -186,6 +201,11 @@ fn render_command(program: &str, path: &[String]) -> String {
 
 fn build_help_args(target: &CliInventoryTarget, path: &[String]) -> Vec<String> {
     match &target.help_strategy {
+        CliHelpStrategy::HeyCommandsJson => {
+            let mut args = path.to_vec();
+            args.push("--help".to_owned());
+            args
+        }
         CliHelpStrategy::AppendFlag { fallback_subcommand } => {
             let mut args = path.to_vec();
             args.push("--help".to_owned());

@@ -205,7 +205,7 @@ fn build_namespace_store(
                         }
                         Some(_) => {}
                         None => {
-                            let account = if provider == ProviderKind::GoogleWorkspace {
+                            let account = if matches!(provider, ProviderKind::GoogleWorkspace | ProviderKind::Hey) {
                                 &namespace.account
                             } else {
                                 &alias
@@ -256,7 +256,7 @@ fn build_namespace_store(
 fn provider_uses_implicit_cli_auth(provider: &ProviderKind) -> bool {
     matches!(
         provider,
-        ProviderKind::GoogleWorkspace | ProviderKind::MyChart | ProviderKind::Schwab
+        ProviderKind::GoogleWorkspace | ProviderKind::Hey | ProviderKind::MyChart | ProviderKind::Schwab
     )
 }
 
@@ -284,6 +284,7 @@ fn default_cli_auth_ref(provider: &ProviderKind, alias: &str) -> Result<AuthRef>
 fn default_cli_auth(provider: ProviderKind, auth_ref: &AuthRef, account: &str) -> Result<ResolvedAuth> {
     let secrets = match provider {
         ProviderKind::GoogleWorkspace => AuthSecretRefs::GoogleCli,
+        ProviderKind::Hey => AuthSecretRefs::HeyCli,
         ProviderKind::MyChart => AuthSecretRefs::MyChartCli {
             base_url: None,
             portal_base_url: None,
@@ -396,6 +397,8 @@ enum RawAuth {
     },
     #[serde(rename = "google_cli")]
     GoogleCli { provider: String, account: String },
+    #[serde(rename = "hey_cli")]
+    HeyCli { provider: String, account: String },
     #[serde(rename = "google_oauth")]
     GoogleOAuth {
         provider: String,
@@ -476,6 +479,7 @@ impl RawAuth {
             Self::GitHubCli { provider, .. }
             | Self::GitHubToken { provider, .. }
             | Self::GoogleCli { provider, .. }
+            | Self::HeyCli { provider, .. }
             | Self::GoogleOAuth { provider, .. }
             | Self::GoogleOAuthFile { provider, .. }
             | Self::MyChartCli { provider, .. }
@@ -489,6 +493,7 @@ impl RawAuth {
             Self::GitHubCli { account, .. }
             | Self::GitHubToken { account, .. }
             | Self::GoogleCli { account, .. }
+            | Self::HeyCli { account, .. }
             | Self::GoogleOAuth { account, .. }
             | Self::GoogleOAuthFile { account, .. }
             | Self::MyChartCli { account, .. }
@@ -510,6 +515,7 @@ impl RawAuth {
             }),
             Self::GitHubCli { .. } => Ok(AuthSecretRefs::GitHubCli),
             Self::GoogleCli { .. } => Ok(AuthSecretRefs::GoogleCli),
+            Self::HeyCli { .. } => Ok(AuthSecretRefs::HeyCli),
             Self::GitHubToken { token, .. } => Ok(AuthSecretRefs::GitHubToken {
                 token: SecretRef::new(token)?,
             }),
@@ -667,8 +673,8 @@ mod tests {
     };
 
     use switchboard_core::{
-        AuthKind, AuthRef, AuthScopeProfile, AuthStore, Error, NamespaceId, NamespaceStore, SecretRef, SecretSource,
-        SecretStore, WritePolicy,
+        AuthKind, AuthRef, AuthScopeProfile, AuthStore, Error, NamespaceId, NamespaceStore, ProviderKind, SecretRef,
+        SecretSource, SecretStore, WritePolicy,
     };
 
     use super::{resolve_configured_path, SwitchboardConfig};
@@ -997,6 +1003,44 @@ account = "eight@example.com"
             error,
             Error::Config("namespace.github.personal must declare auth = \"...\"".into())
         );
+    }
+
+    #[test]
+    fn hey_namespaces_reuse_cli_auth_and_preserve_linked_account_selection() {
+        let config = SwitchboardConfig::from_toml_str(
+            r#"
+[auth.hey_login]
+provider = "hey"
+kind = "hey_cli"
+account = "shared login"
+[namespace.hey.personal]
+provider = "hey"
+account = "12345"
+[namespace.hey.combined]
+provider = "hey"
+account = "all"
+auth = "hey_login"
+"#,
+        )
+        .expect("HEY CLI namespaces should load without secrets");
+        let (namespaces, auth, _) = config.into_stores();
+        for (alias, account, auth_ref, auth_account) in [
+            ("personal", "12345", "hey_personal", "12345"),
+            ("combined", "all", "hey_login", "shared login"),
+        ] {
+            let namespace = namespaces
+                .get(&NamespaceId::new(format!("hey.{alias}")).expect("valid namespace ID"))
+                .expect("HEY namespace should exist");
+            let credentials = auth.get(&namespace.auth_ref).expect("CLI auth should exist");
+            assert_eq!(namespace.provider, ProviderKind::Hey);
+            assert_eq!(namespace.account_label, account);
+            assert_eq!(namespace.auth_ref.as_str(), auth_ref);
+            assert!(namespace.state_dir.is_none());
+            assert_eq!(credentials.kind(), AuthKind::HeyCli);
+            assert_eq!(credentials.account_label(), auth_account);
+            assert!(credentials.secret_refs().is_empty());
+        }
+        assert_eq!(AuthKind::from_identifier("hey_cli"), Some(AuthKind::HeyCli));
     }
 
     #[test]

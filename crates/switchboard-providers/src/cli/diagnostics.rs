@@ -35,6 +35,7 @@ pub fn diagnose_provider_cli(provider: ProviderKind) -> Result<CliBinaryDiagnost
     let manifest = match provider {
         ProviderKind::GitHub => include_str!("../../manifests/github.json"),
         ProviderKind::GoogleWorkspace => include_str!("../../manifests/google.json"),
+        ProviderKind::Hey => include_str!("../../manifests/hey.json"),
         ProviderKind::MyChart => include_str!("../../manifests/mychart.json"),
         ProviderKind::Schwab => include_str!("../../manifests/schwab.json"),
         _ => return Err(Error::UnsupportedOperation(format!("no CLI provider for {provider}"))),

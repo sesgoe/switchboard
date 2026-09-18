@@ -1,0 +1,2711 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "agent_notes": "Linked accounts share the current login. Use list to discover IDs and use \u003cid|all\u003e to persist the default mail filter; --account overrides it for one invocation.",
+      "name": "account",
+      "path": "account",
+      "short": "List and select linked mail accounts",
+      "subcommands": [
+        {
+          "name": "list",
+          "path": "account list",
+          "short": "List linked mail accounts"
+        },
+        {
+          "name": "use",
+          "path": "account use",
+          "short": "Set the default linked mail account"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Subcommands: list, save. Lists downloadable attachments from every message in a known thread. Pass a returned ID to `hey attachment save \u003cid\u003e`.",
+      "name": "attachment",
+      "path": "attachment",
+      "short": "List and save files from a thread",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "allow-partial",
+              "shorthand": "",
+              "usage": "List what could be read of a thread that could only be read in part, with a notice saying what is missing"
+            }
+          ],
+          "name": "list",
+          "path": "attachment list",
+          "short": "List a thread's attachments"
+        },
+        {
+          "agent_notes": "Saves the attachment identified by an ID from `hey attachment list \u003cthread-id\u003e`. Existing files are preserved unless --force is set.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "force",
+              "shorthand": "",
+              "usage": "Replace an existing destination file"
+            },
+            {
+              "default": "",
+              "name": "output",
+              "shorthand": "o",
+              "usage": "Destination file or directory"
+            }
+          ],
+          "name": "save",
+          "path": "attachment save",
+          "short": "Save an attachment to disk"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Use status to check auth before other commands. Returns token expiry info in JSON. Use login --token for non-interactive auth.",
+      "name": "auth",
+      "path": "auth",
+      "short": "Sign in, sign out, and check login status",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "cookie",
+              "shorthand": "",
+              "usage": "Session cookie value from browser (session_token)"
+            },
+            {
+              "default": "false",
+              "name": "no-browser",
+              "shorthand": "",
+              "usage": "Don't open browser, print URL instead"
+            },
+            {
+              "default": "",
+              "name": "token",
+              "shorthand": "",
+              "usage": "Pre-generated Bearer token"
+            }
+          ],
+          "name": "login",
+          "path": "auth login",
+          "short": "Authenticate with the HEY server"
+        },
+        {
+          "name": "logout",
+          "path": "auth logout",
+          "short": "Clear stored credentials"
+        },
+        {
+          "name": "refresh",
+          "path": "auth refresh",
+          "short": "Force token refresh"
+        },
+        {
+          "name": "status",
+          "path": "auth status",
+          "short": "Show authentication status"
+        },
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "stored",
+              "shorthand": "",
+              "usage": "Only print stored OAuth token (ignore HEY_TOKEN env var)"
+            }
+          ],
+          "name": "token",
+          "path": "auth token",
+          "short": "Print access token to stdout"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Accepts a box name or numeric ID. Returns email threads. Use topic_id with hey thread read, reply, and forward; use id with seen, unseen, and move. A row with kind \"bundle\" groups one sender's unseen threads and has no topic_id: list them with hey bundle view \u003cid\u003e, and every thread with that sender via hey contact threads \u003ccontact-id\u003e. --page continues from the next_page cursor of an earlier listing of the same box.",
+      "compatibility_usage": "box \u003cname|id\u003e",
+      "flags": [
+        {
+          "default": "false",
+          "name": "all",
+          "shorthand": "",
+          "usage": "Fetch all results (override --limit)"
+        },
+        {
+          "default": "0",
+          "name": "limit",
+          "shorthand": "",
+          "usage": "Maximum number of threads to show"
+        },
+        {
+          "default": "",
+          "name": "page",
+          "shorthand": "",
+          "usage": "Continue from a next_page cursor"
+        }
+      ],
+      "name": "box",
+      "path": "box",
+      "short": "List HEY boxes and their email threads",
+      "subcommands": [
+        {
+          "agent_notes": "Returns all mailbox types. Use --ids-only to pipe IDs to hey box view.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of boxes to show"
+            }
+          ],
+          "name": "list",
+          "path": "box list",
+          "short": "List your HEY boxes"
+        },
+        {
+          "agent_notes": "Accepts a box name or numeric ID. Returns email threads. Use topic_id with hey thread read, reply, and forward; use id with seen, unseen, and move. A row with kind \"bundle\" groups one sender's unseen threads and has no topic_id: list them with hey bundle view \u003cid\u003e, and every thread with that sender via hey contact threads \u003ccontact-id\u003e. --page continues from the next_page cursor of an earlier listing of the same box.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of threads to show"
+            },
+            {
+              "default": "",
+              "name": "page",
+              "shorthand": "",
+              "usage": "Continue from a next_page cursor"
+            }
+          ],
+          "name": "view",
+          "path": "box view",
+          "short": "List email threads in a box"
+        }
+      ]
+    },
+    {
+      "name": "bubble",
+      "path": "bubble",
+      "short": "Bubble email threads up in the Imbox",
+      "subcommands": [
+        {
+          "agent_notes": "Lists two buckets: bubbled_up, the threads back in the Imbox, and scheduled, the threads waiting in Bubble Up with bubble_up_schedule.bubble_up_at saying when. Use id with hey bubble pop; use topic_id with hey thread read. --limit caps each bucket.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of threads to show per bucket"
+            }
+          ],
+          "name": "list",
+          "path": "bubble list",
+          "short": "List bubbled-up and scheduled email threads"
+        },
+        {
+          "agent_notes": "Accepts one or more box item IDs from hey box view output. Cancels each thread's bubble-up.",
+          "name": "pop",
+          "path": "bubble pop",
+          "short": "Cancel bubble-ups"
+        },
+        {
+          "agent_notes": "Accepts one or more box item IDs from hey box view output. Exactly one of --now, --on, --tomorrow, --weekend and --next-week is required. --on takes a YYYY-MM-DD date; HEY bubbles the threads up at its morning hour of that day, or at its evening hour (18:00) when the date is today. --tomorrow, --weekend and --next-week land at the morning hour of tomorrow, the coming Saturday, and next Monday.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "next-week",
+              "shorthand": "",
+              "usage": "Bubble the threads up Monday morning"
+            },
+            {
+              "default": "false",
+              "name": "now",
+              "shorthand": "",
+              "usage": "Bubble the threads up right away"
+            },
+            {
+              "default": "",
+              "name": "on",
+              "shorthand": "",
+              "usage": "Bubble the threads up on a date (YYYY-MM-DD)"
+            },
+            {
+              "default": "false",
+              "name": "tomorrow",
+              "shorthand": "",
+              "usage": "Bubble the threads up tomorrow morning"
+            },
+            {
+              "default": "false",
+              "name": "weekend",
+              "shorthand": "",
+              "usage": "Bubble the threads up Saturday morning"
+            }
+          ],
+          "name": "up",
+          "path": "bubble up",
+          "short": "Bubble email threads up"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Always run `hey bulk-reply preview \u003cbox-item-id\u003e...` before sending. Send resolves the box items again, keeps HEY's name-tag content, and returns the delivery ID and undo state.",
+      "name": "bulk-reply",
+      "path": "bulk-reply",
+      "short": "Reply to multiple email threads",
+      "subcommands": [
+        {
+          "agent_notes": "Read-only. Box item IDs come from `hey box view` or `hey search`. The result contains the latest replyable entry and exact To, CC, and BCC recipients for each thread.",
+          "name": "preview",
+          "path": "bulk-reply preview",
+          "short": "Preview threads and recipients without sending"
+        },
+        {
+          "agent_notes": "Mutating. Preview first. Accepts a message via -m, stdin, or $EDITOR and repeatable --attach files. HEY's server-provided name-tag content is preserved.",
+          "flags": [
+            {
+              "default": "[]",
+              "name": "attach",
+              "shorthand": "",
+              "usage": "File to attach (repeatable)"
+            },
+            {
+              "default": "",
+              "name": "message",
+              "shorthand": "m",
+              "usage": "Reply message as Markdown (or opens $EDITOR)"
+            },
+            {
+              "default": "",
+              "name": "message-html",
+              "shorthand": "",
+              "usage": "Reply message as raw HTML instead of Markdown"
+            }
+          ],
+          "name": "send",
+          "path": "bulk-reply send",
+          "short": "Send one reply to multiple threads"
+        },
+        {
+          "agent_notes": "Mutating. Works only while HEY's undo window remains open. The bulk reply ID is returned by `hey bulk-reply send`.",
+          "name": "undo",
+          "path": "bulk-reply undo",
+          "short": "Recall a delayed bulk reply"
+        }
+      ]
+    },
+    {
+      "agent_notes": "The ID is a bundle row's own id from hey box view — a row with kind \"bundle\" and no topic_id. Returns the unseen threads the bundle groups, each with topic_id for hey thread read. A bundle read through has no unseen threads; every thread with its sender, seen and unseen, is listed by hey contact threads \u003ccontact-id\u003e.",
+      "compatibility_usage": "bundle \u003cbox-item-id\u003e",
+      "flags": [
+        {
+          "default": "false",
+          "name": "all",
+          "shorthand": "",
+          "usage": "Fetch all results (override --limit)"
+        },
+        {
+          "default": "0",
+          "name": "limit",
+          "shorthand": "",
+          "usage": "Maximum number of threads to show"
+        },
+        {
+          "default": "",
+          "name": "page",
+          "shorthand": "",
+          "usage": "Continue from a next_page cursor"
+        }
+      ],
+      "name": "bundle",
+      "path": "bundle",
+      "short": "List the unseen threads a bundle groups",
+      "subcommands": [
+        {
+          "agent_notes": "The ID is a bundle row's own id from hey box view — a row with kind \"bundle\" and no topic_id. Returns the unseen threads the bundle groups, each with topic_id for hey thread read. A bundle read through has no unseen threads; every thread with its sender, seen and unseen, is listed by hey contact threads \u003ccontact-id\u003e.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of threads to show"
+            },
+            {
+              "default": "",
+              "name": "page",
+              "shorthand": "",
+              "usage": "Continue from a next_page cursor"
+            }
+          ],
+          "name": "view",
+          "path": "bundle view",
+          "short": "List the unseen threads a bundle groups"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Subcommands: list. Returns all calendars with IDs. Pipe IDs to hey event list --calendar \u003cid\u003e.",
+      "name": "calendar",
+      "path": "calendar",
+      "short": "Browse your calendars",
+      "subcommands": [
+        {
+          "name": "list",
+          "path": "calendar list",
+          "short": "List calendars"
+        }
+      ]
+    },
+    {
+      "agent_notes": "List clips, create a clip from text carried by an email entry, or delete a clip. HEY assigns a created clip to the source entry's account and resolves deletion by identity-owned clip ID across linked accounts; --account selects list presentation. The CLI verifies that the passage is source-backed by the entry's message content before saving it, with a 64 KiB passage limit and a 1 MiB source-validation limit. Find clip IDs with hey clip list.",
+      "name": "clip",
+      "path": "clip",
+      "short": "List and manage passages saved from email",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "content",
+              "shorthand": "",
+              "usage": "Text selected from the email entry (required)"
+            }
+          ],
+          "name": "create",
+          "path": "clip create",
+          "short": "Save text from an email entry"
+        },
+        {
+          "name": "delete",
+          "path": "clip delete",
+          "short": "Delete a saved clip"
+        },
+        {
+          "agent_notes": "Returns the newest page of clip IDs, content, source entry IDs, and source thread context. The SDK does not expose the cursor for older pages. Use an ID with hey clip delete.",
+          "name": "list",
+          "path": "clip list",
+          "short": "List the newest page of passages clipped from email"
+        }
+      ]
+    },
+    {
+      "agent_notes": "The ID comes from hey collection list. Detail returns posting IDs for organization actions and topic_id for reading threads, and answers --json, --styled, --markdown, --ids-only and --count.",
+      "compatibility_usage": "collection \u003cid\u003e",
+      "flags": [
+        {
+          "default": "false",
+          "name": "all",
+          "shorthand": "",
+          "usage": "Fetch all results (override --limit)"
+        },
+        {
+          "default": "0",
+          "name": "limit",
+          "shorthand": "",
+          "usage": "Maximum number of threads to show"
+        },
+        {
+          "default": "",
+          "name": "page",
+          "shorthand": "",
+          "usage": "Continue from a next_page cursor"
+        }
+      ],
+      "name": "collection",
+      "path": "collection",
+      "short": "List and manage email collections",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "to",
+              "shorthand": "",
+              "usage": "Collection ID (required)"
+            }
+          ],
+          "name": "add",
+          "path": "collection add",
+          "short": "Add email threads to a collection"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "summary",
+              "shorthand": "",
+              "usage": "Description shown with the collection"
+            }
+          ],
+          "name": "create",
+          "path": "collection create",
+          "short": "Create a collection"
+        },
+        {
+          "agent_notes": "Returns collection IDs and names. Use an ID with hey collection view and hey collection add/remove/update.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of collections to show"
+            }
+          ],
+          "name": "list",
+          "path": "collection list",
+          "short": "List your email collections"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "from",
+              "shorthand": "",
+              "usage": "Collection ID (required)"
+            }
+          ],
+          "name": "remove",
+          "path": "collection remove",
+          "short": "Remove email threads from a collection"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "name",
+              "shorthand": "",
+              "usage": "New collection name"
+            },
+            {
+              "default": "",
+              "name": "summary",
+              "shorthand": "",
+              "usage": "New collection description"
+            }
+          ],
+          "name": "update",
+          "path": "collection update",
+          "short": "Update a collection"
+        },
+        {
+          "agent_notes": "The ID comes from hey collection list. Detail returns posting IDs for organization actions and topic_id for reading threads, and answers --json, --styled, --markdown, --ids-only and --count.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of threads to show"
+            },
+            {
+              "default": "",
+              "name": "page",
+              "shorthand": "",
+              "usage": "Continue from a next_page cursor"
+            }
+          ],
+          "name": "view",
+          "path": "collection view",
+          "short": "List email threads in a collection"
+        }
+      ]
+    },
+    {
+      "flags": [
+        {
+          "default": "false",
+          "name": "help",
+          "shorthand": "h",
+          "usage": "help for commands"
+        }
+      ],
+      "name": "commands",
+      "path": "commands",
+      "short": "List all available commands"
+    },
+    {
+      "agent_notes": "Starts a new thread with --to (optionally --cc/--bcc), which requires --subject, or replies to an existing one with --thread-id, which does not. Repeatable --attach files are uploaded before sending and can be sent without body text. The body is Markdown; use --message-html to send raw HTML instead. --draft saves instead of sending — recipients become optional — and answers the draft ID for hey draft show/edit/send/delete. A new message ends with the sender's HEY name tag, as one composed in HEY does; --no-name-tag leaves it out.",
+      "flags": [
+        {
+          "default": "[]",
+          "name": "attach",
+          "shorthand": "",
+          "usage": "File to attach (repeatable)"
+        },
+        {
+          "default": "",
+          "name": "bcc",
+          "shorthand": "",
+          "usage": "BCC recipient email address(es)"
+        },
+        {
+          "default": "",
+          "name": "cc",
+          "shorthand": "",
+          "usage": "CC recipient email address(es)"
+        },
+        {
+          "default": "false",
+          "name": "draft",
+          "shorthand": "",
+          "usage": "Save as a draft instead of sending"
+        },
+        {
+          "default": "",
+          "name": "message",
+          "shorthand": "m",
+          "usage": "Message body as Markdown (or opens $EDITOR)"
+        },
+        {
+          "default": "",
+          "name": "message-html",
+          "shorthand": "",
+          "usage": "Message body as raw HTML instead of Markdown"
+        },
+        {
+          "default": "false",
+          "name": "no-name-tag",
+          "shorthand": "",
+          "usage": "Leave the sender's HEY name tag off a new message"
+        },
+        {
+          "default": "",
+          "name": "subject",
+          "shorthand": "",
+          "usage": "Message subject (required for a new message)"
+        },
+        {
+          "default": "",
+          "name": "thread-id",
+          "shorthand": "",
+          "usage": "Reply to this thread instead of starting a new one"
+        },
+        {
+          "default": "",
+          "name": "to",
+          "shorthand": "",
+          "usage": "Recipient email address(es)"
+        }
+      ],
+      "name": "compose",
+      "path": "compose",
+      "short": "Write and send a new email"
+    },
+    {
+      "name": "config",
+      "path": "config",
+      "short": "View and change settings",
+      "subcommands": [
+        {
+          "name": "set",
+          "path": "config set",
+          "short": "Set a configuration value in the global config"
+        },
+        {
+          "name": "show",
+          "path": "config show",
+          "short": "Show current configuration with sources"
+        },
+        {
+          "name": "trust-local",
+          "path": "config trust-local",
+          "short": "Trust this repository's local HEY settings"
+        },
+        {
+          "name": "trusted-locals",
+          "path": "config trusted-locals",
+          "short": "List trusted repository-local HEY settings"
+        },
+        {
+          "name": "untrust-local",
+          "path": "config untrust-local",
+          "short": "Remove trust for this repository's local HEY settings"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Contact IDs come from `hey contact list`. Hiding and bundling are reversible. Private notes are managed under `hey contact note`.",
+      "name": "contact",
+      "path": "contact",
+      "short": "Manage contacts",
+      "subcommands": [
+        {
+          "agent_notes": "Name and email are required. Repeat --alias for alternate email addresses. --account-user-id selects an account when the HEY identity has more than one.",
+          "flags": [
+            {
+              "default": "0",
+              "name": "account-user-id",
+              "shorthand": "",
+              "usage": "Account user ID for multi-account identities"
+            },
+            {
+              "default": "[]",
+              "name": "alias",
+              "shorthand": "",
+              "usage": "Alternate email address (repeatable)"
+            },
+            {
+              "default": "",
+              "name": "email",
+              "shorthand": "",
+              "usage": "Primary email address (required)"
+            },
+            {
+              "default": "",
+              "name": "name",
+              "shorthand": "",
+              "usage": "Contact name (required)"
+            }
+          ],
+          "name": "add",
+          "path": "contact add",
+          "short": "Add a contact"
+        },
+        {
+          "agent_notes": "Bundling is a per-contact preference. HEY applies it when the contact's delivery setting supports bundles. Reverse it with `hey contact unbundle \u003cid\u003e`.",
+          "name": "bundle",
+          "path": "contact bundle",
+          "short": "Bundle a contact's mail"
+        },
+        {
+          "agent_notes": "This is reversible. Use `hey contact show-again \u003cid\u003e` to show the contact again.",
+          "name": "hide",
+          "path": "contact hide",
+          "short": "Hide a contact"
+        },
+        {
+          "agent_notes": "Returns contact IDs, names, and email addresses. Use --all to fetch up to 100 pages.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch up to 100 results pages from --page onward"
+            },
+            {
+              "default": "1",
+              "name": "page",
+              "shorthand": "",
+              "usage": "Results page"
+            }
+          ],
+          "name": "list",
+          "path": "contact list",
+          "short": "List contacts"
+        },
+        {
+          "agent_notes": "Private notes support show, set, and delete. Set accepts --note, positional content, stdin, or $EDITOR.",
+          "name": "note",
+          "path": "contact note",
+          "short": "Manage private contact notes",
+          "subcommands": [
+            {
+              "name": "delete",
+              "path": "contact note delete",
+              "short": "Delete a private contact note"
+            },
+            {
+              "agent_notes": "Accepts --note, positional content, stdin, or opens $EDITOR with the existing note. The note is Markdown, or raw HTML via --note-html. Use the delete subcommand to clear a note.",
+              "flags": [
+                {
+                  "default": "",
+                  "name": "note",
+                  "shorthand": "n",
+                  "usage": "Private note as Markdown (or opens $EDITOR)"
+                },
+                {
+                  "default": "",
+                  "name": "note-html",
+                  "shorthand": "",
+                  "usage": "Private note as raw HTML instead of Markdown"
+                }
+              ],
+              "name": "set",
+              "path": "contact note set",
+              "short": "Write or edit a private contact note"
+            },
+            {
+              "name": "show",
+              "path": "contact note show",
+              "short": "Read a private contact note"
+            }
+          ]
+        },
+        {
+          "agent_notes": "Returns contact details, aliases, screening status, and the private note. The embedded postings are one page of the contact's threads; hey contact threads \u003cid\u003e pages through all of them.",
+          "name": "show",
+          "path": "contact show",
+          "short": "View a contact"
+        },
+        {
+          "agent_notes": "Reverses `hey contact hide \u003cid\u003e`.",
+          "name": "show-again",
+          "path": "contact show-again",
+          "short": "Show a hidden contact again"
+        },
+        {
+          "agent_notes": "The ID comes from hey contact list, a posting's creator, or hey bundle view's contact. Returns threads newest first with topic_id for hey thread read, and answers --json, --styled, --markdown, --ids-only and --count.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of threads to show"
+            },
+            {
+              "default": "",
+              "name": "page",
+              "shorthand": "",
+              "usage": "Continue from a next_page cursor"
+            }
+          ],
+          "name": "threads",
+          "path": "contact threads",
+          "short": "List every thread with a contact"
+        },
+        {
+          "agent_notes": "Unbundling reverses `hey contact bundle \u003cid\u003e` and preserves the underlying threads.",
+          "name": "unbundle",
+          "path": "contact unbundle",
+          "short": "List a contact's mail separately"
+        },
+        {
+          "agent_notes": "At least one field is required. Repeat --alias to replace aliases. --alias= clears every alias.",
+          "flags": [
+            {
+              "default": "[]",
+              "name": "alias",
+              "shorthand": "",
+              "usage": "Replacement alternate email address (repeatable)"
+            },
+            {
+              "default": "",
+              "name": "email",
+              "shorthand": "",
+              "usage": "New primary email address"
+            },
+            {
+              "default": "",
+              "name": "name",
+              "shorthand": "",
+              "usage": "New contact name"
+            }
+          ],
+          "name": "update",
+          "path": "contact update",
+          "short": "Edit a contact"
+        }
+      ]
+    },
+    {
+      "name": "doctor",
+      "path": "doctor",
+      "short": "Find login and configuration problems"
+    },
+    {
+      "agent_notes": "Subcommands: list, show, edit, send, delete. Draft IDs come from `hey draft list` or from `hey compose --draft`/`hey reply --draft`. list's --page continues from the next_page cursor of an earlier listing.",
+      "name": "draft",
+      "path": "draft",
+      "short": "Manage unsent drafts",
+      "subcommands": [
+        {
+          "agent_notes": "Takes draft IDs from `hey draft list`. Trashes the draft; there is no undo here.",
+          "name": "delete",
+          "path": "draft delete",
+          "short": "Trash drafts"
+        },
+        {
+          "agent_notes": "Each flag replaces its field and an omitted flag keeps what the draft has — --to/--cc/--bcc replace that whole recipient kind (an explicit empty value clears it). With no field flags the body opens in $EDITOR as Markdown. A scheduled delivery is preserved.",
+          "flags": [
+            {
+              "default": "",
+              "name": "bcc",
+              "shorthand": "",
+              "usage": "Replace the BCC recipients (comma separated; empty clears)"
+            },
+            {
+              "default": "",
+              "name": "cc",
+              "shorthand": "",
+              "usage": "Replace the CC recipients (comma separated; empty clears)"
+            },
+            {
+              "default": "",
+              "name": "message",
+              "shorthand": "m",
+              "usage": "Replace the body with this Markdown"
+            },
+            {
+              "default": "",
+              "name": "message-html",
+              "shorthand": "",
+              "usage": "Replace the body with raw HTML instead of Markdown"
+            },
+            {
+              "default": "",
+              "name": "subject",
+              "shorthand": "",
+              "usage": "Replace the subject"
+            },
+            {
+              "default": "",
+              "name": "to",
+              "shorthand": "",
+              "usage": "Replace the To recipients (comma separated; empty clears)"
+            }
+          ],
+          "name": "edit",
+          "path": "draft edit",
+          "short": "Change a draft"
+        },
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of drafts to show"
+            },
+            {
+              "default": "",
+              "name": "page",
+              "shorthand": "",
+              "usage": "Continue from a next_page cursor"
+            }
+          ],
+          "name": "list",
+          "path": "draft list",
+          "short": "List draft emails"
+        },
+        {
+          "agent_notes": "Sends the draft as it stands — recipients are required, added with `hey draft edit --to`. Delivery goes through HEY's undo window. Scheduling a delivery is done in a HEY app for now; the API cannot yet name an exact instant.",
+          "name": "send",
+          "path": "draft send",
+          "short": "Deliver a draft"
+        },
+        {
+          "agent_notes": "Draft IDs come from `hey draft list` or from saving with `hey compose --draft`. The body is Markdown.",
+          "name": "show",
+          "path": "draft show",
+          "short": "Read a draft back"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Subcommands: list, day, week, add, edit, delete. \"What's on the schedule today?\" is answered by day, not list: day and week read the span as HEY draws it, with a repeating event expanded into the occurrences inside it, over the calendars switched on in HEY. list reads what calendars hold — every calendar unless --calendar names one — and a repeating event is one row, its series, on the day the series began. An edit is not a patch on HEY's side: it resends the notes, location, link, attached email, reminders and time zones the event already carries, so notes lose their formatting and a countdown is removed unless --countdown names one again.",
+      "name": "event",
+      "path": "event",
+      "short": "Read and manage calendar events",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "all-day",
+              "shorthand": "",
+              "usage": "Make it an all-day event"
+            },
+            {
+              "default": "0",
+              "name": "calendar",
+              "shorthand": "",
+              "usage": "Calendar ID to file the event on"
+            },
+            {
+              "default": "false",
+              "name": "circle",
+              "shorthand": "",
+              "usage": "Circle the event"
+            },
+            {
+              "default": "0",
+              "name": "countdown",
+              "shorthand": "",
+              "usage": "Count down this many units to the event"
+            },
+            {
+              "default": "days",
+              "name": "countdown-unit",
+              "shorthand": "",
+              "usage": "Countdown unit: days, weeks or months"
+            },
+            {
+              "default": "",
+              "name": "end-time",
+              "shorthand": "",
+              "usage": "End time (HH:MM, defaults to an hour after the start)"
+            },
+            {
+              "default": "",
+              "name": "ends-on",
+              "shorthand": "",
+              "usage": "End date (YYYY-MM-DD, defaults to the start date)"
+            },
+            {
+              "default": "[]",
+              "name": "invite",
+              "shorthand": "",
+              "usage": "Email address to invite (repeatable, replaces the guest list)"
+            },
+            {
+              "default": "",
+              "name": "link",
+              "shorthand": "",
+              "usage": "Meeting or reference URL"
+            },
+            {
+              "default": "",
+              "name": "location",
+              "shorthand": "",
+              "usage": "Event location"
+            },
+            {
+              "default": "",
+              "name": "notes",
+              "shorthand": "",
+              "usage": "Event notes"
+            },
+            {
+              "default": "[]",
+              "name": "remind",
+              "shorthand": "",
+              "usage": "Notice before the event, e.g. 10m, 1h, 1d (repeatable)"
+            },
+            {
+              "default": "",
+              "name": "repeat",
+              "shorthand": "",
+              "usage": "Repeat: every_day, every_weekday, every_week, every_other_week, every_day_of_month, every_year"
+            },
+            {
+              "default": "0",
+              "name": "repeat-times",
+              "shorthand": "",
+              "usage": "Stop repeating after this many occurrences"
+            },
+            {
+              "default": "",
+              "name": "repeat-until",
+              "shorthand": "",
+              "usage": "Stop repeating on this date (YYYY-MM-DD)"
+            },
+            {
+              "default": "",
+              "name": "start-time",
+              "shorthand": "",
+              "usage": "Start time (HH:MM)"
+            },
+            {
+              "default": "",
+              "name": "starts-on",
+              "shorthand": "",
+              "usage": "Start date (YYYY-MM-DD, defaults to today)"
+            },
+            {
+              "default": "",
+              "name": "time-zone",
+              "shorthand": "",
+              "usage": "IANA zone the times are written in (defaults to this machine's)"
+            },
+            {
+              "default": "",
+              "name": "title",
+              "shorthand": "t",
+              "usage": "Event title"
+            }
+          ],
+          "name": "add",
+          "path": "event add",
+          "short": "Create an event"
+        },
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of events to show"
+            }
+          ],
+          "name": "day",
+          "path": "event day",
+          "short": "List the events of one day, as HEY draws it"
+        },
+        {
+          "agent_notes": "Deletes the whole event, recurring series included. An event on a shared calendar is deleted for everybody on it.",
+          "name": "delete",
+          "path": "event delete",
+          "short": "Delete an event"
+        },
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "all-day",
+              "shorthand": "",
+              "usage": "Make it an all-day event"
+            },
+            {
+              "default": "0",
+              "name": "calendar",
+              "shorthand": "",
+              "usage": "Calendar ID to file the event on"
+            },
+            {
+              "default": "false",
+              "name": "circle",
+              "shorthand": "",
+              "usage": "Circle the event"
+            },
+            {
+              "default": "0",
+              "name": "countdown",
+              "shorthand": "",
+              "usage": "Count down this many units to the event"
+            },
+            {
+              "default": "days",
+              "name": "countdown-unit",
+              "shorthand": "",
+              "usage": "Countdown unit: days, weeks or months"
+            },
+            {
+              "default": "",
+              "name": "end-time",
+              "shorthand": "",
+              "usage": "End time (HH:MM, defaults to an hour after the start)"
+            },
+            {
+              "default": "",
+              "name": "ends-on",
+              "shorthand": "",
+              "usage": "End date (YYYY-MM-DD, defaults to the start date)"
+            },
+            {
+              "default": "[]",
+              "name": "invite",
+              "shorthand": "",
+              "usage": "Email address to invite (repeatable, replaces the guest list)"
+            },
+            {
+              "default": "",
+              "name": "link",
+              "shorthand": "",
+              "usage": "Meeting or reference URL"
+            },
+            {
+              "default": "",
+              "name": "location",
+              "shorthand": "",
+              "usage": "Event location"
+            },
+            {
+              "default": "",
+              "name": "notes",
+              "shorthand": "",
+              "usage": "Event notes"
+            },
+            {
+              "default": "[]",
+              "name": "remind",
+              "shorthand": "",
+              "usage": "Notice before the event, e.g. 10m, 1h, 1d (repeatable)"
+            },
+            {
+              "default": "",
+              "name": "repeat",
+              "shorthand": "",
+              "usage": "Repeat: every_day, every_weekday, every_week, every_other_week, every_day_of_month, every_year"
+            },
+            {
+              "default": "0",
+              "name": "repeat-times",
+              "shorthand": "",
+              "usage": "Stop repeating after this many occurrences"
+            },
+            {
+              "default": "",
+              "name": "repeat-until",
+              "shorthand": "",
+              "usage": "Stop repeating on this date (YYYY-MM-DD)"
+            },
+            {
+              "default": "",
+              "name": "start-time",
+              "shorthand": "",
+              "usage": "Start time (HH:MM)"
+            },
+            {
+              "default": "",
+              "name": "starts-on",
+              "shorthand": "",
+              "usage": "Start date (YYYY-MM-DD, defaults to today)"
+            },
+            {
+              "default": "",
+              "name": "time-zone",
+              "shorthand": "",
+              "usage": "IANA zone the times are written in (defaults to this machine's)"
+            },
+            {
+              "default": "",
+              "name": "title",
+              "shorthand": "t",
+              "usage": "Event title"
+            }
+          ],
+          "name": "edit",
+          "path": "event edit",
+          "short": "Change an event"
+        },
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "calendar",
+              "shorthand": "",
+              "usage": "Calendar ID to read (defaults to every calendar)"
+            },
+            {
+              "default": "",
+              "name": "ends-on",
+              "shorthand": "",
+              "usage": "End date (YYYY-MM-DD)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of events to show"
+            },
+            {
+              "default": "",
+              "name": "starts-on",
+              "shorthand": "",
+              "usage": "Start date (YYYY-MM-DD)"
+            }
+          ],
+          "name": "list",
+          "path": "event list",
+          "short": "List calendar events"
+        },
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of events to show"
+            }
+          ],
+          "name": "week",
+          "path": "event week",
+          "short": "List the events of one week, as HEY draws it"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Forwards the latest entry in a thread with HEY's quoted content. Accepts comma-separated recipients and an optional note via -m.",
+      "flags": [
+        {
+          "default": "",
+          "name": "bcc",
+          "shorthand": "",
+          "usage": "BCC recipient email address(es)"
+        },
+        {
+          "default": "",
+          "name": "cc",
+          "shorthand": "",
+          "usage": "CC recipient email address(es)"
+        },
+        {
+          "default": "",
+          "name": "message",
+          "shorthand": "m",
+          "usage": "Optional Markdown note above the forwarded message"
+        },
+        {
+          "default": "",
+          "name": "message-html",
+          "shorthand": "",
+          "usage": "The note as raw HTML instead of Markdown"
+        },
+        {
+          "default": "",
+          "name": "to",
+          "shorthand": "",
+          "usage": "Recipient email address(es)"
+        }
+      ],
+      "name": "forward",
+      "path": "forward",
+      "short": "Forward the latest message in a thread"
+    },
+    {
+      "agent_notes": "Subcommands: list, create, edit, delete, complete, uncomplete. Use list --ids-only to pipe IDs to the rest. Days accept weekday names or 0 (Sunday) through 6 (Saturday).",
+      "name": "habit",
+      "path": "habit",
+      "short": "Create and manage habits",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "date",
+              "shorthand": "",
+              "usage": "Date (YYYY-MM-DD, default: today)"
+            }
+          ],
+          "name": "complete",
+          "path": "habit complete",
+          "short": "Mark a habit as complete for a date"
+        },
+        {
+          "flags": [
+            {
+              "default": "blue",
+              "name": "color",
+              "shorthand": "",
+              "usage": "Habit color. Accepted values: blue, red, gold, green, teal, purple, pink, brown"
+            },
+            {
+              "default": "0,1,2,3,4,5,6",
+              "name": "days",
+              "shorthand": "",
+              "usage": "Weekdays (names or 0-6, comma-separated)"
+            },
+            {
+              "default": "weights",
+              "name": "icon",
+              "shorthand": "",
+              "usage": "Habit icon. Accepted values: weights, art, baseball, basketball, bed, bicycle, brain, camera, cat, church, clean, cook, dog, football, fruit, game, garden, guitar, heart, hydrate, meditate, money, music, piano, pill, plant, read, run, smoke, soccer, study, swim, tea, toothbrush, tree, tv, vegetable, walk, water, write, yoga, heat, ice, lotus, breathe, drink, star"
+            },
+            {
+              "default": "",
+              "name": "name",
+              "shorthand": "",
+              "usage": "Habit name"
+            }
+          ],
+          "name": "create",
+          "path": "habit create",
+          "short": "Create a habit"
+        },
+        {
+          "name": "delete",
+          "path": "habit delete",
+          "short": "Delete a habit and its history"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "color",
+              "shorthand": "",
+              "usage": "New habit color. Accepted values: blue, red, gold, green, teal, purple, pink, brown"
+            },
+            {
+              "default": "",
+              "name": "days",
+              "shorthand": "",
+              "usage": "New weekdays (names or 0-6, comma-separated)"
+            },
+            {
+              "default": "",
+              "name": "icon",
+              "shorthand": "",
+              "usage": "New habit icon. Accepted values: weights, art, baseball, basketball, bed, bicycle, brain, camera, cat, church, clean, cook, dog, football, fruit, game, garden, guitar, heart, hydrate, meditate, money, music, piano, pill, plant, read, run, smoke, soccer, study, swim, tea, toothbrush, tree, tv, vegetable, walk, water, write, yoga, heat, ice, lotus, breathe, drink, star"
+            },
+            {
+              "default": "",
+              "name": "name",
+              "shorthand": "",
+              "usage": "New habit name"
+            }
+          ],
+          "name": "edit",
+          "path": "habit edit",
+          "short": "Edit a habit"
+        },
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "",
+              "name": "date",
+              "shorthand": "",
+              "usage": "Any day in the week to read (YYYY-MM-DD, defaults to today)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of habits to show"
+            }
+          ],
+          "name": "list",
+          "path": "habit list",
+          "short": "List habits"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "date",
+              "shorthand": "",
+              "usage": "Date (YYYY-MM-DD, default: today)"
+            }
+          ],
+          "name": "uncomplete",
+          "path": "habit uncomplete",
+          "short": "Remove a habit completion for a date"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Accepts one or more box item IDs from hey box view output. Ignored threads remain in their box and can be restored with hey stop-ignoring.",
+      "name": "ignore",
+      "path": "ignore",
+      "short": "Ignore email threads"
+    },
+    {
+      "agent_notes": "Subcommands: list, read, write. Read defaults to today. Write accepts --content, stdin, or opens $EDITOR; content is Markdown, or raw HTML via --content-html.",
+      "name": "journal",
+      "path": "journal",
+      "short": "Read and write journal entries",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "calendar",
+              "shorthand": "",
+              "usage": "Calendar ID to read (defaults to the personal calendar)"
+            },
+            {
+              "default": "",
+              "name": "ends-on",
+              "shorthand": "",
+              "usage": "End date (YYYY-MM-DD)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of entries to show"
+            },
+            {
+              "default": "",
+              "name": "starts-on",
+              "shorthand": "",
+              "usage": "Start date (YYYY-MM-DD)"
+            }
+          ],
+          "name": "list",
+          "path": "journal list",
+          "short": "List journal entries"
+        },
+        {
+          "name": "read",
+          "path": "journal read",
+          "short": "Read a journal entry (default: today)"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "content",
+              "shorthand": "c",
+              "usage": "Journal content as Markdown (or opens $EDITOR)"
+            },
+            {
+              "default": "",
+              "name": "content-html",
+              "shorthand": "",
+              "usage": "Journal content as raw HTML instead of Markdown"
+            }
+          ],
+          "name": "write",
+          "path": "journal write",
+          "short": "Write or edit a journal entry (default: today)"
+        }
+      ]
+    },
+    {
+      "agent_notes": "The ID comes from hey label list. Returns labeled email threads with topic_id for reading them, and answers --json, --styled, --markdown, --ids-only and --count.",
+      "compatibility_usage": "label \u003cid\u003e",
+      "flags": [
+        {
+          "default": "false",
+          "name": "all",
+          "shorthand": "",
+          "usage": "Fetch all results (override --limit)"
+        },
+        {
+          "default": "0",
+          "name": "limit",
+          "shorthand": "",
+          "usage": "Maximum number of threads to show"
+        },
+        {
+          "default": "",
+          "name": "page",
+          "shorthand": "",
+          "usage": "Continue from a next_page cursor"
+        }
+      ],
+      "name": "label",
+      "path": "label",
+      "short": "List and manage email labels",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "to",
+              "shorthand": "",
+              "usage": "Label ID (required)"
+            }
+          ],
+          "name": "add",
+          "path": "label add",
+          "short": "Add a label to email threads"
+        },
+        {
+          "name": "create",
+          "path": "label create",
+          "short": "Create a label and add it to email threads"
+        },
+        {
+          "agent_notes": "Returns label IDs and names. Use an ID with hey label view and hey label add/remove.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of labels to show"
+            }
+          ],
+          "name": "list",
+          "path": "label list",
+          "short": "List your email labels"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "from",
+              "shorthand": "",
+              "usage": "Label ID, or all to remove every label (required)"
+            }
+          ],
+          "name": "remove",
+          "path": "label remove",
+          "short": "Remove labels from email threads"
+        },
+        {
+          "agent_notes": "The ID comes from hey label list. Returns labeled email threads with topic_id for reading them, and answers --json, --styled, --markdown, --ids-only and --count.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of threads to show"
+            },
+            {
+              "default": "",
+              "name": "page",
+              "shorthand": "",
+              "usage": "Continue from a next_page cursor"
+            }
+          ],
+          "name": "view",
+          "path": "label view",
+          "short": "List email threads with a label"
+        }
+      ]
+    },
+    {
+      "flags": [
+        {
+          "default": "",
+          "name": "cookie",
+          "shorthand": "",
+          "usage": "Session cookie value from browser (session_token)"
+        },
+        {
+          "default": "false",
+          "name": "no-browser",
+          "shorthand": "",
+          "usage": "Don't open browser, print URL instead"
+        },
+        {
+          "default": "",
+          "name": "token",
+          "shorthand": "",
+          "usage": "Pre-generated Bearer token"
+        }
+      ],
+      "name": "login",
+      "path": "login",
+      "short": "Authenticate with the HEY server"
+    },
+    {
+      "name": "logout",
+      "path": "logout",
+      "short": "Clear stored credentials"
+    },
+    {
+      "agent_notes": "Long-running server; stdout speaks the MCP wire protocol. Not for interactive use.",
+      "flags": [
+        {
+          "default": "[]",
+          "name": "domains",
+          "shorthand": "",
+          "usage": "Narrow to specific domains (comma-separated; default all)"
+        },
+        {
+          "default": "false",
+          "name": "read-only",
+          "shorthand": "",
+          "usage": "Serve only read-only actions"
+        }
+      ],
+      "name": "mcp",
+      "path": "mcp",
+      "short": "Serve HEY to MCP clients over stdio"
+    },
+    {
+      "agent_notes": "Accepts box item IDs from hey box view output. --to accepts a box name, kind, or ID. To remove Reply Later, move the threads to Imbox; seen threads then appear in Previously Seen. Use hey bubble up for Bubble Up.",
+      "flags": [
+        {
+          "default": "",
+          "name": "to",
+          "shorthand": "",
+          "usage": "Destination box name, kind, or ID (required)"
+        }
+      ],
+      "name": "move",
+      "path": "move",
+      "short": "Move email threads to another box"
+    },
+    {
+      "agent_notes": "Replies to the latest entry in a thread, addressed the way HEY addresses a reply: everyone that entry was addressed to, plus its sender on the To line, minus the acting user's own addresses. Accepts message via -m, stdin, or $EDITOR, plus repeatable --attach files; an attachment can be sent without body text. The message is Markdown; use --message-html to send raw HTML instead. --draft saves the reply as a draft — carrying those recipients — and answers the draft ID for hey draft show/edit/send/delete.",
+      "flags": [
+        {
+          "default": "[]",
+          "name": "attach",
+          "shorthand": "",
+          "usage": "File to attach (repeatable)"
+        },
+        {
+          "default": "false",
+          "name": "draft",
+          "shorthand": "",
+          "usage": "Save as a draft instead of sending"
+        },
+        {
+          "default": "",
+          "name": "message",
+          "shorthand": "m",
+          "usage": "Reply message as Markdown (or opens $EDITOR)"
+        },
+        {
+          "default": "",
+          "name": "message-html",
+          "shorthand": "",
+          "usage": "Reply message as raw HTML instead of Markdown"
+        }
+      ],
+      "name": "reply",
+      "path": "reply",
+      "short": "Reply to a thread"
+    },
+    {
+      "agent_notes": "Clearance IDs come from `hey screener list`, and are not contact IDs. Approving delivers everything the sender has waiting; denying hides it. Both are reversible with the opposite command. `hey screener history` shows what was already decided.",
+      "name": "screener",
+      "path": "screener",
+      "short": "Decide who gets to email you",
+      "subcommands": [
+        {
+          "agent_notes": "Clearance IDs come from `hey screener list`, not contact IDs. --box and --seen apply to one sender at a time; several IDs go through the bulk endpoint, which takes neither. Reverse with `hey screener deny \u003cid\u003e`.",
+          "flags": [
+            {
+              "default": "",
+              "name": "box",
+              "shorthand": "",
+              "usage": "Deliver their email to this box instead of the Imbox"
+            },
+            {
+              "default": "false",
+              "name": "seen",
+              "shorthand": "",
+              "usage": "Mark what they already sent as seen"
+            }
+          ],
+          "name": "approve",
+          "path": "screener approve",
+          "short": "Let a sender through"
+        },
+        {
+          "agent_notes": "Clears the whole queue for the account, not one sender, and takes no confirmation. It decides nothing: senders reappear in The Screener on their next email, so what they already sent stays hidden until then. HEY queues the work, so `hey screener list` may still show the queue for a moment afterwards.",
+          "name": "clear",
+          "path": "screener clear",
+          "short": "Empty the Screener without deciding"
+        },
+        {
+          "agent_notes": "Clearance IDs come from `hey screener list`, not contact IDs. --spam also marks what they already sent as spam and trains HEY's filter on it, which is harder to undo than denying. Reverse with `hey screener approve \u003cid\u003e`.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "spam",
+              "shorthand": "",
+              "usage": "Also mark what they sent as spam and train the filter"
+            }
+          ],
+          "name": "deny",
+          "path": "screener deny",
+          "short": "Turn a sender away"
+        },
+        {
+          "agent_notes": "Only senders already decided on — the pending queue is `hey screener list`. Change a decision with `hey screener approve \u003cid\u003e` or `hey screener deny \u003cid\u003e` using the ID from here. --page continues from the next_page cursor of an earlier listing.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (up to 100 pages)"
+            },
+            {
+              "default": "",
+              "name": "page",
+              "shorthand": "",
+              "usage": "Continue from a next_page cursor"
+            }
+          ],
+          "name": "history",
+          "path": "screener history",
+          "short": "List the senders already screened"
+        },
+        {
+          "agent_notes": "Returns clearance IDs with the sender and the subject of what they sent. Feed the ID to `hey screener approve` or `hey screener deny`, and topic_id to `hey thread read` to read the thread first. Use --count for the number alone, which is a much cheaper request. --page continues from the next_page cursor of an earlier listing.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (up to 100 pages)"
+            },
+            {
+              "default": "",
+              "name": "page",
+              "shorthand": "",
+              "usage": "Continue from a next_page cursor"
+            }
+          ],
+          "name": "list",
+          "path": "screener list",
+          "short": "List the senders waiting to be screened"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Returns one result per thread. id is the box item ID for organization actions when the thread has an active box item, topic_id opens the thread, and messages contains the matching message summaries. Use `hey search filters` to discover box, date, label, and attachment values.",
+      "flags": [
+        {
+          "default": "false",
+          "name": "all",
+          "shorthand": "",
+          "usage": "Fetch up to 100 results pages from --page onward"
+        },
+        {
+          "default": "",
+          "name": "any",
+          "shorthand": "",
+          "usage": "Words where at least one must appear"
+        },
+        {
+          "default": "",
+          "name": "attachment",
+          "shorthand": "",
+          "usage": "Attachment kind: any, images, pdfs, calendar_invites, documents, spreadsheets, presentations, media, or zip_files"
+        },
+        {
+          "default": "",
+          "name": "date",
+          "shorthand": "",
+          "usage": "Date range: last_7_days, last_30_days, last_90_days, or year"
+        },
+        {
+          "default": "",
+          "name": "exact",
+          "shorthand": "",
+          "usage": "Exact phrase that must appear"
+        },
+        {
+          "default": "",
+          "name": "from",
+          "shorthand": "",
+          "usage": "Sender name or email address"
+        },
+        {
+          "default": "",
+          "name": "in",
+          "shorthand": "",
+          "usage": "Box: imbox, feed, papertrail, or trash"
+        },
+        {
+          "default": "",
+          "name": "label",
+          "shorthand": "",
+          "usage": "Label name"
+        },
+        {
+          "default": "",
+          "name": "none",
+          "shorthand": "",
+          "usage": "Words that must not appear"
+        },
+        {
+          "default": "1",
+          "name": "page",
+          "shorthand": "",
+          "usage": "Results page"
+        },
+        {
+          "default": "",
+          "name": "required",
+          "shorthand": "",
+          "usage": "Words that must all appear"
+        },
+        {
+          "default": "",
+          "name": "subject",
+          "shorthand": "",
+          "usage": "Words in the subject"
+        },
+        {
+          "default": "",
+          "name": "to",
+          "shorthand": "",
+          "usage": "Recipient name or email address"
+        }
+      ],
+      "name": "search",
+      "path": "search",
+      "short": "Search email threads and messages",
+      "subcommands": [
+        {
+          "agent_notes": "Returns the current values accepted by --in, --date, --label, and --attachment.",
+          "name": "filters",
+          "path": "search filters",
+          "short": "List available search refinement values"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Accepts one or more box item IDs from hey box view output. Marks each email thread as seen/read.",
+      "name": "seen",
+      "path": "seen",
+      "short": "Mark email threads as seen"
+    },
+    {
+      "name": "set-aside",
+      "path": "set-aside",
+      "short": "List and group email threads in Set Aside",
+      "subcommands": [
+        {
+          "name": "group",
+          "path": "set-aside group",
+          "short": "List and manage groups in Set Aside",
+          "subcommands": [
+            {
+              "agent_notes": "Accepts box item IDs from hey set-aside view and a group ID from hey set-aside group list. Threads not yet in Set Aside are moved there and marked seen, which also clears a bubble-up. A thread already in another group is moved to this one.",
+              "flags": [
+                {
+                  "default": "",
+                  "name": "to",
+                  "shorthand": "",
+                  "usage": "Group ID (required)"
+                }
+              ],
+              "name": "add",
+              "path": "set-aside group add",
+              "short": "Add email threads to a Set Aside group"
+            },
+            {
+              "agent_notes": "Accepts box item IDs from hey set-aside view. Threads not yet in Set Aside are moved there and marked seen, which also clears a bubble-up. Returns the new group's ID.",
+              "name": "create",
+              "path": "set-aside group create",
+              "short": "Gather email threads into a new Set Aside group"
+            },
+            {
+              "agent_notes": "Deleting a group moves its threads to Previously Seen in the Imbox, not back into Set Aside. Use hey set-aside group remove to ungroup threads that should stay set aside.",
+              "name": "delete",
+              "path": "set-aside group delete",
+              "short": "Break up a Set Aside group"
+            },
+            {
+              "agent_notes": "Returns group IDs with their thread counts. Use an ID with hey set-aside group view, add and delete.",
+              "name": "list",
+              "path": "set-aside group list",
+              "short": "List the groups in Set Aside"
+            },
+            {
+              "agent_notes": "Accepts box item IDs from hey set-aside view. The threads stay in Set Aside, outside any group.",
+              "name": "remove",
+              "path": "set-aside group remove",
+              "short": "Take email threads out of their Set Aside group"
+            },
+            {
+              "agent_notes": "The ID comes from hey set-aside group list. Returns the group's threads; use id with hey set-aside group remove and hey move, topic_id with hey thread read. --page continues from the next_page cursor of an earlier listing of the same group.",
+              "flags": [
+                {
+                  "default": "false",
+                  "name": "all",
+                  "shorthand": "",
+                  "usage": "Fetch all results (override --limit)"
+                },
+                {
+                  "default": "0",
+                  "name": "limit",
+                  "shorthand": "",
+                  "usage": "Maximum number of threads to show"
+                },
+                {
+                  "default": "",
+                  "name": "page",
+                  "shorthand": "",
+                  "usage": "Continue from a next_page cursor"
+                }
+              ],
+              "name": "view",
+              "path": "set-aside group view",
+              "short": "List email threads in a Set Aside group"
+            }
+          ]
+        },
+        {
+          "agent_notes": "Returns the same threads as hey box view set-aside, with each thread's box_group_id. Use id with hey set-aside group create/add/remove and hey move; use topic_id with hey thread read.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of threads to show"
+            },
+            {
+              "default": "",
+              "name": "page",
+              "shorthand": "",
+              "usage": "Continue from a next_page cursor"
+            }
+          ],
+          "name": "view",
+          "path": "set-aside view",
+          "short": "List email threads in Set Aside"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Runs the first-run wizard: OAuth sign-in, a look at the linked accounts, coding-agent setup, and the Omarchy integration when detected. --skip-agents and --skip-omarchy leave those integrations unchanged. --silent-success keeps required authentication and failure output, shows an installation spinner, and ends with SETUP COMPLETE. HEY_NONINTERACTIVE=1 suppresses interactive sign-in, but unskipped agent setup still writes skill files and the wizard persists the onboarded flag — there is no read-only mode; use `hey doctor` to inspect without changing anything. --json changes only the output format: a terminal on stdin (an allocated PTY included) still starts browser OAuth and waits for it. Logged out and non-interactive reports status incomplete with a remediation breadcrumb.",
+      "flags": [
+        {
+          "default": "false",
+          "name": "silent-success",
+          "shorthand": "",
+          "usage": "Show setup activity and end a successful run with SETUP COMPLETE"
+        },
+        {
+          "default": "false",
+          "name": "skip-agents",
+          "shorthand": "",
+          "usage": "Leave coding-agent integrations unchanged"
+        },
+        {
+          "default": "false",
+          "name": "skip-omarchy",
+          "shorthand": "",
+          "usage": "Leave the Omarchy integration unchanged"
+        }
+      ],
+      "name": "setup",
+      "path": "setup",
+      "short": "Set up HEY for first use",
+      "subcommands": [
+        {
+          "agent_notes": "Never prompts. Set HEY_SETUP_AGENT=claude|codex|all|none to choose; unset auto-detects a single agent. --remove uninstalls HEY's managed agent integrations.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "remove",
+              "shorthand": "",
+              "usage": "Remove HEY coding-agent integrations"
+            }
+          ],
+          "name": "agents",
+          "path": "setup agents",
+          "short": "Install or remove HEY coding-agent integrations"
+        },
+        {
+          "agent_notes": "Non-interactive when output is piped or --json is set. Succeeds with {plugin_installed, agent_detected}; a not-detected or not-connected outcome is an error envelope (code setup_incomplete, manual steps in the hint) with a nonzero exit.",
+          "name": "claude",
+          "path": "setup claude",
+          "short": "Connect Claude Code to HEY"
+        },
+        {
+          "agent_notes": "Non-interactive when output is piped or --json is set. Succeeds with {plugin_installed, agent_detected}; a not-detected or not-connected outcome is an error envelope (code setup_incomplete, manual steps in the hint) with a nonzero exit.",
+          "name": "codex",
+          "path": "setup codex",
+          "short": "Connect Codex to HEY"
+        },
+        {
+          "agent_notes": "Only meaningful on Omarchy Linux. Writes to ~/.config/omarchy and ~/.local/share/applications; never edits Hyprland keybindings.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "no-notify",
+              "shorthand": "",
+              "usage": "Turn new-mail toasts back off"
+            },
+            {
+              "default": "false",
+              "name": "notify",
+              "shorthand": "",
+              "usage": "Turn on the bar plugin's new-mail toasts"
+            },
+            {
+              "default": "false",
+              "name": "remove",
+              "shorthand": "",
+              "usage": "Remove everything hey setup omarchy installed"
+            }
+          ],
+          "name": "omarchy",
+          "path": "setup omarchy",
+          "short": "Install hey into the Omarchy desktop"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Accepts the topic_id from hey box view, hey label view, or hey search output. Returns the sharing link in the url field.",
+      "name": "share",
+      "path": "share",
+      "short": "Get a sharing link for an email thread"
+    },
+    {
+      "agent_notes": "Subcommands: install, generate. install writes the script where the shell reads it and is the usual way in; generate prints it to stdout for a package or a dotfile to place itself.",
+      "name": "shell-completion",
+      "path": "shell-completion",
+      "short": "Set up tab completion for your shell",
+      "subcommands": [
+        {
+          "name": "generate",
+          "path": "shell-completion generate",
+          "short": "Print a completion script to stdout"
+        },
+        {
+          "agent_notes": "Writes one file under the user's home. Reports the path it wrote and any shell configuration still needed.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "force",
+              "shorthand": "",
+              "usage": "Write even over a packaged or foreign completion file"
+            }
+          ],
+          "name": "install",
+          "path": "shell-completion install",
+          "short": "Install shell completions where your shell will find them"
+        }
+      ]
+    },
+    {
+      "name": "skill",
+      "path": "skill",
+      "short": "Manage the embedded agent skill",
+      "subcommands": [
+        {
+          "name": "install",
+          "path": "skill install",
+          "short": "Install the hey skill globally for your coding agents"
+        }
+      ]
+    },
+    {
+      "agent_notes": "List, create, update, or delete snippets. Find snippet IDs with hey snippet list.",
+      "name": "snippet",
+      "path": "snippet",
+      "short": "List and manage reusable email snippets",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "content",
+              "shorthand": "",
+              "usage": "Snippet content as Markdown"
+            },
+            {
+              "default": "",
+              "name": "content-html",
+              "shorthand": "",
+              "usage": "Snippet content as raw HTML instead of Markdown"
+            },
+            {
+              "default": "",
+              "name": "name",
+              "shorthand": "",
+              "usage": "Snippet name (required)"
+            }
+          ],
+          "name": "create",
+          "path": "snippet create",
+          "short": "Create a reusable email snippet"
+        },
+        {
+          "name": "delete",
+          "path": "snippet delete",
+          "short": "Delete a reusable email snippet"
+        },
+        {
+          "agent_notes": "Returns snippet IDs, names, plain text, and rich-text HTML. Use an ID with hey snippet update or delete.",
+          "name": "list",
+          "path": "snippet list",
+          "short": "List reusable email snippets"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "content",
+              "shorthand": "",
+              "usage": "New snippet content as Markdown"
+            },
+            {
+              "default": "",
+              "name": "content-html",
+              "shorthand": "",
+              "usage": "New snippet content as raw HTML instead of Markdown"
+            },
+            {
+              "default": "",
+              "name": "name",
+              "shorthand": "",
+              "usage": "New snippet name"
+            }
+          ],
+          "name": "update",
+          "path": "snippet update",
+          "short": "Update a reusable email snippet"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Accepts one or more box item IDs from hey box view output. Marks each thread as spam and removes it from the current box.",
+      "name": "spam",
+      "path": "spam",
+      "short": "Mark email threads as spam"
+    },
+    {
+      "agent_notes": "Accepts one or more box item IDs from hey box view output. Reverses hey ignore for each thread.",
+      "name": "stop-ignoring",
+      "path": "stop-ignoring",
+      "short": "Stop ignoring email threads"
+    },
+    {
+      "agent_notes": "Subcommands: read. Thread IDs come from hey box view. Use the same ID with hey reply or hey forward.",
+      "name": "thread",
+      "path": "thread",
+      "short": "Read email threads",
+      "subcommands": [
+        {
+          "agent_notes": "Returns a thread with all entries, oldest first. Entry bodies are Markdown; --html writes an HTML document instead, one \u003carticle\u003e per entry (data-entry-id, data-created-at, data-body-state) holding HEY's original HTML. A thread that could only be read in part is refused unless --allow-partial is passed, in which case each entry's body_state says what was read. Use the topic ID with hey reply or hey forward.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "allow-partial",
+              "shorthand": "",
+              "usage": "Take a thread that could only be read in part, with a notice saying what is missing"
+            }
+          ],
+          "name": "read",
+          "path": "thread read",
+          "short": "Read a thread"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Subcommands: start, stop, current, list, edit, delete, export, categories, category. Use current to check if tracking is active before start/stop. Stop takes --category to file the track as it stops it. List, edit and delete work on completed tracks and take the IDs list reports. Export writes CSV to stdout or safely saves it with --output.",
+      "name": "timetrack",
+      "path": "timetrack",
+      "short": "Track time",
+      "subcommands": [
+        {
+          "name": "categories",
+          "path": "timetrack categories",
+          "short": "List time track categories"
+        },
+        {
+          "name": "category",
+          "path": "timetrack category",
+          "short": "Manage time track categories",
+          "subcommands": [
+            {
+              "name": "create",
+              "path": "timetrack category create",
+              "short": "Create a time track category"
+            },
+            {
+              "name": "delete",
+              "path": "timetrack category delete",
+              "short": "Delete a time track category"
+            },
+            {
+              "name": "rename",
+              "path": "timetrack category rename",
+              "short": "Rename a time track category"
+            }
+          ]
+        },
+        {
+          "name": "current",
+          "path": "timetrack current",
+          "short": "Show current time tracking status"
+        },
+        {
+          "name": "delete",
+          "path": "timetrack delete",
+          "short": "Delete a time track"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "category",
+              "shorthand": "",
+              "usage": "Category title to file the track under, created if HEY has none by that title"
+            },
+            {
+              "default": "",
+              "name": "end",
+              "shorthand": "",
+              "usage": "New end, as YYYY-MM-DDTHH:MM in your time zone"
+            },
+            {
+              "default": "",
+              "name": "notes",
+              "shorthand": "",
+              "usage": "New notes"
+            },
+            {
+              "default": "",
+              "name": "start",
+              "shorthand": "",
+              "usage": "New start, as YYYY-MM-DDTHH:MM in your time zone"
+            }
+          ],
+          "name": "edit",
+          "path": "timetrack edit",
+          "short": "Edit a completed time track"
+        },
+        {
+          "agent_notes": "Writes HEY's CSV unchanged to stdout. Use --output to save it to a file; existing paths are preserved unless --force is set. The columns are Start, End, Duration, Category, and Notes.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "force",
+              "shorthand": "",
+              "usage": "Replace an existing output file"
+            },
+            {
+              "default": "",
+              "name": "output",
+              "shorthand": "o",
+              "usage": "Save CSV to this file instead of stdout"
+            }
+          ],
+          "name": "export",
+          "path": "timetrack export",
+          "short": "Export completed time tracks as CSV"
+        },
+        {
+          "agent_notes": "Reads HEY's tracked time index, newest-ended first. Category is a title and is empty for an unfiled track. --category takes a category ID from hey timetrack categories.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "category",
+              "shorthand": "",
+              "usage": "Only tracks filed under this category ID"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of time tracks to show"
+            }
+          ],
+          "name": "list",
+          "path": "timetrack list",
+          "short": "List completed time tracks"
+        },
+        {
+          "name": "start",
+          "path": "timetrack start",
+          "short": "Start time tracking"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "category",
+              "shorthand": "",
+              "usage": "Category title to file the stopped track under, created if HEY has none by that title"
+            }
+          ],
+          "name": "stop",
+          "path": "timetrack stop",
+          "short": "Stop time tracking"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Subcommands: list, add, complete, uncomplete, delete. Use list --ids-only to pipe IDs to complete/delete.",
+      "name": "todo",
+      "path": "todo",
+      "short": "Create and manage to-dos",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "date",
+              "shorthand": "",
+              "usage": "Due date (YYYY-MM-DD)"
+            },
+            {
+              "default": "",
+              "name": "title",
+              "shorthand": "t",
+              "usage": "Todo title"
+            }
+          ],
+          "name": "add",
+          "path": "todo add",
+          "short": "Create a new todo"
+        },
+        {
+          "name": "complete",
+          "path": "todo complete",
+          "short": "Mark a todo as complete"
+        },
+        {
+          "name": "delete",
+          "path": "todo delete",
+          "short": "Delete a todo"
+        },
+        {
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Fetch all results (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "calendar",
+              "shorthand": "",
+              "usage": "Calendar ID to read (defaults to the personal calendar)"
+            },
+            {
+              "default": "",
+              "name": "ends-on",
+              "shorthand": "",
+              "usage": "End date (YYYY-MM-DD)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of todos to show"
+            },
+            {
+              "default": "",
+              "name": "starts-on",
+              "shorthand": "",
+              "usage": "Start date (YYYY-MM-DD)"
+            }
+          ],
+          "name": "list",
+          "path": "todo list",
+          "short": "List todos"
+        },
+        {
+          "name": "uncomplete",
+          "path": "todo uncomplete",
+          "short": "Mark a todo as incomplete"
+        }
+      ]
+    },
+    {
+      "agent_notes": "Accepts one or more box item IDs from hey box view output. Shared threads lose your access rather than being deleted for everyone.",
+      "name": "trash",
+      "path": "trash",
+      "short": "Move email threads to Trash"
+    },
+    {
+      "flags": [
+        {
+          "default": "",
+          "name": "instance",
+          "shorthand": "",
+          "usage": "Name this TUI for remote open requests"
+        },
+        {
+          "default": "false",
+          "name": "remote",
+          "shorthand": "",
+          "usage": "Open the destination in a running TUI and exit"
+        },
+        {
+          "default": "false",
+          "name": "screener",
+          "shorthand": "",
+          "usage": "Open The Screener"
+        },
+        {
+          "default": "0",
+          "name": "topic",
+          "shorthand": "",
+          "usage": "Open a thread by topic ID"
+        },
+        {
+          "default": "",
+          "name": "topic-title",
+          "shorthand": "",
+          "usage": "Set the title of a directly opened thread"
+        }
+      ],
+      "name": "tui",
+      "path": "tui",
+      "short": "Launch the interactive terminal UI"
+    },
+    {
+      "agent_notes": "Accepts one or more box item IDs from hey box view output. Marks each email thread as unseen/unread.",
+      "name": "unseen",
+      "path": "unseen",
+      "short": "Mark email threads as unseen"
+    },
+    {
+      "agent_notes": "Accepts the topic_id from hey box view, hey label view, or hey search output. The thread remains in HEY.",
+      "name": "unshare",
+      "path": "unshare",
+      "short": "Turn off an email thread's sharing link"
+    },
+    {
+      "agent_notes": "Exits 0 only when already current or when the upgrade was applied and confirmed. An optional version argument pins the target release for native and mise installs; upgrades never downgrade. Error codes: upgrade_required (an update exists but this install method must be upgraded another way — follow the hint), upgrade_incomplete, upgrade_unverified, upgrade_failed.",
+      "name": "upgrade",
+      "path": "upgrade",
+      "short": "Upgrade hey to the latest release"
+    },
+    {
+      "name": "version",
+      "path": "version",
+      "short": "Show the installed hey version"
+    },
+    {
+      "agent_notes": "Long-running. Writes one JSON object per changed thread to stdout (NDJSON), not the usual envelope. Use --exit-on-first to block until one change lands and then exit.",
+      "flags": [
+        {
+          "default": "[]",
+          "name": "box",
+          "shorthand": "",
+          "usage": "Box whose changes to report, by name or ID (repeatable, defaults to all; every box is followed either way, so new mail is judged across all of them)"
+        },
+        {
+          "default": "[added,updated,deleted,resync,recording_added,recording_updated,recording_deleted,calendar_added,calendar_updated,calendar_deleted,calendar_resync]",
+          "name": "events",
+          "shorthand": "",
+          "usage": "Changes to report: added, updated, deleted, resync and new for mail; recording_added, recording_updated, recording_deleted, calendar_added, calendar_updated, calendar_deleted and calendar_resync for the calendars"
+        },
+        {
+          "default": "false",
+          "name": "exit-on-first",
+          "shorthand": "",
+          "usage": "Exit after the first change"
+        },
+        {
+          "default": "",
+          "name": "run-async",
+          "shorthand": "",
+          "usage": "Shell command to spawn per change, without waiting for it"
+        },
+        {
+          "default": "",
+          "name": "run-sync",
+          "shorthand": "",
+          "usage": "Shell command to run per change, one at a time, waiting for each"
+        },
+        {
+          "default": "",
+          "name": "since",
+          "shorthand": "",
+          "usage": "Report changes since this time first (RFC 3339 or YYYY-MM-DD)"
+        },
+        {
+          "default": "0s",
+          "name": "timeout",
+          "shorthand": "",
+          "usage": "Give up waiting after this long (for example 30m)"
+        }
+      ],
+      "name": "watch",
+      "path": "watch",
+      "short": "Follow email threads and calendars as they change"
+    },
+    {
+      "agent_notes": "The workflow ID comes from hey workflow list. Detail returns stage IDs in position order.",
+      "compatibility_usage": "workflow \u003cid\u003e",
+      "name": "workflow",
+      "path": "workflow",
+      "short": "List and manage email workflows",
+      "subcommands": [
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "stage",
+              "shorthand": "",
+              "usage": "Stage ID (required)"
+            },
+            {
+              "default": "",
+              "name": "to",
+              "shorthand": "",
+              "usage": "Workflow ID (required)"
+            }
+          ],
+          "name": "add",
+          "path": "workflow add",
+          "short": "Add email threads to a workflow stage"
+        },
+        {
+          "name": "create",
+          "path": "workflow create",
+          "short": "Create an email workflow"
+        },
+        {
+          "name": "delete",
+          "path": "workflow delete",
+          "short": "Delete an email workflow"
+        },
+        {
+          "agent_notes": "Returns workflow IDs, names, and linked account IDs. Use an ID with hey workflow view; use --account to limit the list to one linked mail account.",
+          "flags": [
+            {
+              "default": "false",
+              "name": "all",
+              "shorthand": "",
+              "usage": "Show every workflow (override --limit)"
+            },
+            {
+              "default": "0",
+              "name": "limit",
+              "shorthand": "",
+              "usage": "Maximum number of workflows to show"
+            }
+          ],
+          "name": "list",
+          "path": "workflow list",
+          "short": "List your email workflows"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "to",
+              "shorthand": "",
+              "usage": "Destination stage ID (required)"
+            },
+            {
+              "default": "",
+              "name": "workflow",
+              "shorthand": "",
+              "usage": "Workflow ID (required)"
+            }
+          ],
+          "name": "move",
+          "path": "workflow move",
+          "short": "Move email threads to another workflow stage"
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "from",
+              "shorthand": "",
+              "usage": "Workflow ID (required)"
+            }
+          ],
+          "name": "remove",
+          "path": "workflow remove",
+          "short": "Remove email threads from a workflow"
+        },
+        {
+          "agent_notes": "Create adds an Untitled stage; use hey workflow view \u003cid\u003e to find its stage ID, then update it with --name.",
+          "name": "stage",
+          "path": "workflow stage",
+          "short": "Manage workflow stages",
+          "subcommands": [
+            {
+              "name": "create",
+              "path": "workflow stage create",
+              "short": "Add an Untitled stage to a workflow"
+            },
+            {
+              "name": "delete",
+              "path": "workflow stage delete",
+              "short": "Delete a workflow stage"
+            },
+            {
+              "flags": [
+                {
+                  "default": "",
+                  "name": "name",
+                  "shorthand": "",
+                  "usage": "New stage name (required)"
+                }
+              ],
+              "name": "update",
+              "path": "workflow stage update",
+              "short": "Rename a workflow stage"
+            }
+          ]
+        },
+        {
+          "flags": [
+            {
+              "default": "",
+              "name": "name",
+              "shorthand": "",
+              "usage": "New workflow name (required)"
+            }
+          ],
+          "name": "update",
+          "path": "workflow update",
+          "short": "Rename an email workflow"
+        },
+        {
+          "agent_notes": "The workflow ID comes from hey workflow list. Detail returns stage IDs in position order.",
+          "name": "view",
+          "path": "workflow view",
+          "short": "View a workflow and its stages"
+        }
+      ]
+    }
+  ],
+  "summary": "Available commands"
+}

@@ -1,0 +1,47 @@
+{
+  "provider": "hey",
+  "binaries": [
+    {
+      "id": "hey",
+      "program": "hey",
+      "env_override": "SWITCHBOARD_HEY_BIN",
+      "version_args": ["--version"]
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "root_help",
+      "args": ["--help"]
+    }
+  ],
+  "commands": [
+    {
+      "name": "hey.cli.read",
+      "kind": "read",
+      "summary": "Run a raw hey read command",
+      "surface": "raw",
+      "strategy": {
+        "kind": "raw_passthrough"
+      },
+      "execution": {
+        "kind": "executable",
+        "binary": "hey",
+        "capability": "root_help"
+      }
+    },
+    {
+      "name": "hey.cli.write",
+      "kind": "write",
+      "summary": "Run a raw hey write command",
+      "surface": "raw",
+      "strategy": {
+        "kind": "raw_passthrough"
+      },
+      "execution": {
+        "kind": "executable",
+        "binary": "hey",
+        "capability": "root_help"
+      }
+    }
+  ]
+}
